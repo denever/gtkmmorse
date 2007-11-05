@@ -1,4 +1,4 @@
-# Copyright (C) 2005 Giuseppe Martino <denever@users.sf.net>
+# Copyright (C) 2005, 2006, 2007 Giuseppe Martino <denever@users.sf.net>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without 
