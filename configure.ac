@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([gtkmmorse], [0.9.15], [Giuseppe Martino denever@users.sf.net])
+AC_INIT([gtkmmorse], [0.9.16], [Giuseppe Martino denever@users.sf.net])
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -16,8 +16,6 @@ AC_PROG_INSTALL
 AC_HEADER_STDC	    
 
 # Checks for libraries: libao, libgtkmm, libgconfmm, libgthread
-#AC_CHECK_LIB(ao, main)
-#AC_CHECK_HEADERS(ao/ao.h, [], [echo "Error! You need to have libao (www.xiph.org/ao) around.";exit -1])
 
 PKG_CHECK_MODULES([AO], [ao >= 0.8])
 PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4 >= 2.4])
