@@ -1,0 +1,485 @@
+2007-10-20 07:05  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, src/checkbox.cc: Added Symbols treeview
+
+2007-10-14 01:16  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/resources.hh: Updated strings resources
+
+2007-10-03 16:49  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Committed Diane VA3DB's patch
+
+2007-08-25 20:58  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* docs, docs/gtkmmorse_uml.dia: Aggiunto il diagramma UML iniziale
+
+2007-08-25 17:09  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/kochsetupbox.hh,
+	  include/setupbox.hh, src/blockbox.cc, src/kochsetupbox.cc,
+	  src/setupbox.cc: Rimosse Gtk::HBox da blockbox, setupbox,
+	  kochsetupbox non piu' necessaria visto l'utilizzo di Gtk::Frame
+
+2007-08-25 10:38  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Ripristinato temporaneamente iostream
+
+2007-08-25 10:38  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Utilizzato Gtk::Alignment
+	  in blockbox
+
+2007-08-25 10:37  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/mainwindow.cc: Modificato l'ordine dei tab
+
+2007-08-25 10:20  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, src/checkbox.cc: Corretto la disposizione
+	  di alignment
+
+2007-08-25 09:33  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, src/checkbox.cc: Utilizzato Gtk::Frame e
+	  Gtk::Alignment in checkbox
+
+2007-08-25 09:32  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Utilizzato HButtonBox in
+	  blockbox eliminato HBox submixed
+
+2007-08-19 15:41  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc, src/blocks.cc, src/checkbox.cc, src/keyer.cc,
+	  src/koch.cc, src/kochsetupbox.cc, src/setupbox.cc: Removed
+	  unused #include <iostream>
+
+2007-08-19 15:35  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/keycheckentry.hh: Removed include in <iostream>
+	  --Questa linea, e quelle sotto di essa, saranno ignorate--
+	  
+	  M keycheckentry.hh
+
+2007-08-19 10:06  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/kochsetupbox.hh, src/kochsetupbox.cc: Utilizzata
+	  Gtk::Frame in kochsetupbox
+
+2007-08-19 09:39  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/setupbox.hh, src/setupbox.cc: Utilizzato Gtk::Frame in
+	  setupbox
+
+2007-08-19 09:30  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Utilizzata Gtk::Frame in
+	  blockbox
+
+2007-07-02 06:46  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* VERSION: Rimosso VERSION
+
+2007-07-01 09:13  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Committed Jan-Simon Möller sound smothening patch
+
+2007-06-15 09:04  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* bootstrap, configure.ac: Annullato aggiornamento automatico
+
+2007-06-15 09:03  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* bootstrap, configure.ac: Aggiunto il supporto per
+	  l'aggiornamento automatico della versione
+
+2007-06-15 08:51  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* Makefile.am: Aggiornato Makefile.am con gtkmmorse.1
+
+2007-06-15 08:48  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* GtkMMorse.1, .1: Rinominato GtkMMorse.1 in gtkmmorse.1
+
+2007-06-15 07:01  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/astream.hh: Eliminato l'utilizzo della macro HAVE_AO_AO_H
+
+2007-06-15 06:53  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* configure.ac, src/Makefile.am: Aggiunta gestione di libao
+	  tramite pkg-config
+
+2007-06-15 06:48  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* GtkMMorse.1: Modificato il titolo della manpage
+
+2007-06-15 06:45  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* ChangeLog: Modificato autore del ChangeLog s/Giuseppe Martino <denever@users.sourceforge.net>/.../g
+
+2007-06-15 06:44  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* ChangeLog: Aggiornato ChangeLog
+
+2007-06-15 06:10  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/kochsetupbox.cc: Corretti alcuni valori e voci di
+	  configurazione in kochsetupbox
+
+2007-06-15 06:09  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/kochbox.cc: Utilizzato l'esercizio di tipo koch
+
+2007-06-15 06:08  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/kochbox.hh: Rimossi i widget non necessari
+
+2007-06-15 06:08  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/mainwindow.hh, src/mainwindow.cc: Aggiunti al widget
+	  notebook kochbox e kochsetupbox
+
+2007-06-15 06:07  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/blockbox.cc: Utilizzata linelen nel keyer di blockbox
+
+2007-06-15 06:06  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/blocks.cc, src/qrz.cc: Aggiunto return in blocks::execute e
+	  qrz::execute
+
+2007-06-15 06:06  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, src/Makefile.am: Aggiunti i file koch.hh e
+	  koch.cc ai rispettivi Makefile.am
+
+2007-06-15 06:05  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/resources.hh: Modificata la stringa mainwindow_item6
+
+2007-06-15 06:04  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/koch.hh, src/koch.cc: Aggiunta supporto alla gestione
+	  degli esercizi koch
+
+2007-06-14 18:57  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/kochsetupbox.cc: Corretta la lettura da file di
+	  configurazione
+	  Corretto l'uso dei widget
+
+2007-06-14 18:55  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/kochsetupbox.hh: Aggiunto il metodo
+	  on_txtchars_insert_at_cursor
+
+2007-06-14 18:54  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/Makefile.am: Aggiunto ai sorgenti da compilare kochboxsetup
+
+2007-06-14 18:53  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* configure.ac: Rimosse macro non necessarie
+
+2007-06-14 18:52  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/resources.hh: Aggiunta la stringa insert_skill
+
+2007-06-06 18:40  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/kochsetupbox.hh, src/kochbox.cc, src/kochsetupbox.cc:
+	  Aggiunto parziale e non funzionante KochSetupBox
+
+2007-06-03 06:21  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/kochbox.hh, include/mainwindow.hh,
+	  src/Makefile.am, src/kochbox.cc, src/mainwindow.cc: Added
+	  KochBox object
+
+2007-06-02 20:10  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/setupbox.cc: Eliminato blocco try catch nel costruttore di
+	  SetupBox
+
+2007-06-02 20:09  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/mainwindow.hh, include/setupbox.hh,
+	  src/blockbox.cc, src/main.cc, src/mainwindow.cc,
+	  src/setupbox.cc: Aggiunto utilizzo di Gconf per il salvataggio
+	  delle configurazioni
+
+2007-05-30 18:31  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh: Aggiunto il puntatore m_audioout come
+	  variabile membro di blockbox
+
+2007-05-30 18:30  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/blockbox.cc: Implementata la deallocazione di audioout
+
+2007-05-30 18:29  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* configure.ac, src/Makefile.am: Aggiunto supporto per GCONFMM
+
+2007-05-30 15:37  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/checkbox.cc: Corretto il calcolo della percentuale
+
+2007-05-19 18:08  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/exercise.cc: Fixed last tokem omitting bug
+
+2007-05-17 14:56  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/checkbox.cc: Aggiunto calcolo della percentuale corretta in
+	  checkbox
+
+2007-04-27 20:06  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/checkbox.hh, include/exercise.hh,
+	  src/blockbox.cc, src/checkbox.cc, src/exercise.cc,
+	  src/mainwindow.cc: Rimosso da CheckBox il bottone m_btn_check
+	  Aggiunti a CheckBox gli slot on_exercise_started e
+	  on_exercise_finished
+	  Aggiunto a CheckBox la variabile privata m_strings_lasted per
+	  contare le stringhe mancanti da inserire
+	  Aggiunti a BlockBox i segnali exercise_started e
+	  exercise_finished
+	  Modificata Exercise::stringtok() per restituire
+	  std::list<std::list>
+	  In MainWindow::MainWindow() collegati i segnali
+	  BlockBox::exercise_started a CheckBox::on_exercise_started
+	  In MainWindow::MainWindow() collegati i segnali
+	  BlockBox::exercise_finished a CheckBox::on_exercise_finished
+	  Modificata BlockBox::on_button_play_clicked() per emettere
+	  exercise_started
+	  Modificata BlockBox::on_play_finished() per emettere
+	  exercise_finished
+	  Modificata CheckBox::CheckBox() per inizializzare
+	  m_strings_lasted a zero, per impostare a non sensibile
+	  m_txt_copied, per rimuvere m_btn_check
+	  Modificata CheckBox::on_txt_copied_return_pressed() per
+	  aggiugere stringhe fino a che m_strings_lasted > 0
+	  Aggiunta CheckBox::on_exercise_started() con cui si attiva
+	  m_txt_copied, si imposta m_strings_lasted al numero totale di
+	  stringhe dell'esercizio,
+	  m_txt_copied prende il focus e la tabella viene pulita.
+	  Rimossa CheckBox::on_btn_check_clicked()
+	  Aggiunta CheckBox::on_exercise_finished() con cui si disattiva
+	  m_txt_copied, si caricano le stringhe dell'esercizio nella
+	  tabella
+
+2007-04-22 18:21  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/checkbox.hh,
+	  include/keycheckentry.hh, src/checkbox.cc: Aggiunto in CheckBox
+	  oggetto keyCheckEntry per il controllo del tasto return
+	  Aggiunta gestione del segnale di return_pressed
+	  Aggiunto metodo append_copied a CheckBox
+	  Aggiunto il supporto per l'inserimento automatico del testo in
+	  colonna con il return
+	  Iniziato a scrivere il controllo delle stringhe
+
+2007-04-22 16:36  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, src/checkbox.cc: Inserito text entry per
+	  l'inserimento delle stringhe copiate
+
+2007-04-21 20:18  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/astream.hh, include/blockbox.hh, src/astream.cc,
+	  src/blockbox.cc: Aggiunta la segnalazione della fine del play
+	  del esercizio
+
+2007-04-21 16:17  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Rimosso ioastream
+
+2007-04-21 16:17  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Aggiunto il controllo sulla condizione del buffer
+
+2007-04-21 15:50  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/astream.cc: Aggiunti i mutex
+	  Rimossi output di debug
+
+2007-04-21 15:42  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/blockbox.cc: Utilizzata enqueue_pause al posto di
+	  Glib::usleep visto che il thread di play è indipendente
+
+2007-04-21 15:35  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/astream.hh, include/keyer.hh, src/Makefile.am,
+	  src/astream.cc, src/blockbox.cc, src/keyer.cc: Implementato il
+	  threading in oastream
+	  Modificati di conseguenza anche il keyer
+	  Aggiunta la dipendenza da GThread in Makefile.am
+
+2007-03-31 09:20  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Implementato il blocco di
+	  m_btn_play in base allo stato di m_cmb_charset
+
+2007-03-31 08:55  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/astream.hh,
+	  include/audioworkspace.hh, include/keyer.hh, include/wave.hh,
+	  src/Makefile.am, src/astream.cc, src/audioworkspace.cc,
+	  src/blockbox.cc, src/keyer.cc, src/main.cc, src/wave.cc: Rimosso
+	  l'oggetto AudioWorkSpace
+	  Spostato l'oggetto Wave in astream come semplice classe
+	  ausiliaria
+	  Aggiornati i Makefile.am
+	  Riscritto astream per utilizzare i thread
+	  Aggiornato keyer per utilizzare la nuova interfaccia di oastream
+	  Aggiunta a blockbox la funzionalità di btn_play
+	  Inizializzati i thread nel main.cc
+
+2007-03-29 09:50  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* configure.ac, src/Makefile.am: Aggiunto il supporto per la
+	  libreria gthread
+
+2007-03-25 17:54  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/blocks.hh, include/exercise.hh,
+	  include/qrz.hh, include/skill.hh, src/Makefile.am,
+	  src/blocks.cc, src/exercise.cc, src/qrz.cc: Aggiunti gli oggetti
+	  di gestione degli esercizi Morse presi da aldo-core rev 32
+
+2007-03-25 17:52  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/resources.hh: Corretto dobbia definizione della
+	  descrizione charset
+
+2007-03-25 17:50  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/checkbox.cc: Corrette le dimensioni del bottone check
+
+2007-03-25 17:40  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/resources.hh: Revert to old style charset description
+
+2007-03-25 17:33  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Utilizzato ComboBox con
+	  ModelColumn che restituisca lo skill
+	  Eliminati eventi per submixed e per il combobox changed
+	  Aggiunto il metodo append_charset per aggiungere opzioni al
+	  combobox
+	  Modificato m_charset in unsigned int
+
+2007-03-24 17:17  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/checkbox.hh, src/blockbox.cc,
+	  src/checkbox.cc, src/mainwindow.cc: Spostato il bottone check da
+	  blockbox a checkbox
+	  Aggiunte le colonne keyed e copied
+
+2007-03-24 16:57  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, src/checkbox.cc: Corretta la gestione della
+	  tabella di check in checkbox
+	  Corretto il metodo di append_result in checkbox
+
+2007-03-24 11:46  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* VERSION, configure.ac: Change VERSION to 0.9.14
+
+2007-03-24 07:44  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/checkbox.hh,
+	  include/configuration.hh, include/mainwindow.hh,
+	  include/setupbox.hh, src/blockbox.cc, src/checkbox.cc,
+	  src/main.cc, src/mainwindow.cc, src/setupbox.cc: Aggiornate le
+	  date nei disclaimer
+
+2007-03-24 07:39  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/checkbox.hh, include/mainwindow.hh, src/Makefile.am,
+	  src/checkbox.cc, src/mainwindow.cc: Aggiunta checkbox a sinistra
+	  della notebook
+
+2007-03-23 22:01  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, src/blockbox.cc: Aggiunti i bottoni play e
+	  check
+
+2007-03-23 21:02  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/resources.hh, src/blockbox.cc:
+	  Added submixed checkbutton
+
+2007-03-23 20:05  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* ChangeLog, GtkMMorse.1, NEWS, README, configure.ac: Svuotati
+	  Changelog NEWS README
+	  Abbandonato [A|a]ldo
+
+2007-03-23 20:01  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/blockbox.hh, include/configuration.hh, include/keyer.hh,
+	  include/mainwindow.hh, include/random.hh, include/resources.hh,
+	  include/setupbox.hh: Abbandonato [A|aldo] anche negli headers
+	  Rinominati alcuni item in resources
+
+2007-03-23 20:00  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* src/Makefile.am, src/blockbox.cc, src/configuration.cc,
+	  src/keyer.cc, src/main.cc, src/mainwindow.cc, src/random.cc,
+	  src/setupbox.cc: Eliminato [A|a]ldo
+	  Utilizzato resources.hh in windowmain
+
+2007-03-23 19:37  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/blockbox.hh, include/mainwindow.hh,
+	  include/resources.hh, include/setupbox.hh, src/Makefile.am,
+	  src/blockbox.cc, src/mainwindow.cc, src/setupbox.cc: Aggiunto
+	  l'oggetto BlockBox
+	  Rimossi i virtual dal SetupBox
+
+2007-03-23 18:17  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/mainwindow.hh, include/setupbox.hh, src/mainwindow.cc,
+	  src/setupbox.cc: Trasformate le classi SetupBox e MainWindow in
+	  classi concrete
+	  Aggiunto lo slot quit per il bottone quit in MainWindow
+
+2007-03-23 18:05  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* include/Makefile.am, include/configuration.hh,
+	  include/mainwindow.hh, include/setupbox.hh, src/Makefile.am,
+	  src/configuration.cc, src/mainwindow.cc, src/setupbox.cc:
+	  Aggiunto l'oggetto configuration per mantenere memoria delle
+	  configurazioni
+	  Aggiunto l'oggetto setupbox che gestisce l'interfaccia di
+	  configurazione
+
+2007-03-23 16:50  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* Makefile.am: Corretto Makefile.am per aggiungere GtkMMorse
+
+2007-03-23 16:49  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* GtkMMorse.1: Aggiunto man page per GtkMMorse
+
+2007-03-23 16:48  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* AUTHORS, ChangeLog, NEWS, README, THANKS, VERSION: Aggiunti file
+	  indispensabili
+
+2007-03-23 16:45  Giuseppe Martino <denever@users.sourceforge.net>
+
+	* Makefile.am, bootstrap, configure.ac, include,
+	  include/Makefile.am, include/astream.hh, include/audioexcep.hh,
+	  include/audioworkspace.hh, include/exception.hh,
+	  include/keyer.hh, include/mainwindow.hh, include/random.hh,
+	  include/resources.hh, include/wave.hh, src, src/Makefile.am,
+	  src/astream.cc, src/audioworkspace.cc, src/keyer.cc,
+	  src/main.cc, src/mainwindow.cc, src/random.cc, src/wave.cc:
+	  Import iniziale
+

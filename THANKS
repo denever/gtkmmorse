@@ -1,0 +1,11 @@
+Thanks to Arlo Gittings KC0MNN for a lot of corrections about grammar issues and for README and README.sources.
+Thanks to Leonard Penzer DH7LP for a lot of feedbacks, for German language support, for correction in speed selection.
+Thanks to David Sumbler for a lot of corrections about grammar issues and for README and README.sources.
+Thanks to Thomas Herlea for :
+	1. more detailed exercise evaluation
+	2. displaying of the current option value in setup and the possibility to keep a value unchanged by pressing Enter
+	3. more configurable start for the Koch training method
+	4. saving the difficulty level achieved in the Koch training method
+Thanks to Bob Harrington for autoconf and automake support and for improved random number generator
+Thanks to Bob Harrington for suggestion about libao (www.xiph.org/ao)
+Thanks to Ferdinando Maresca for a lot of bug reports

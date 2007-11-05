@@ -1,0 +1,48 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH GTKMMORSE 1 "Jun 15, 2007"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+gtkmmorse \-  A Gtk+ morse code trainer written in ISO C++.
+
+.SH SYNOPSIS
+.B gtkmmorse
+.br
+.SH DESCRIPTION
+.ad b
+\fBGtkMMorse\fP is developed from scratch in ISO C++ using GtkMM library, GNU C++ Standard Library and libao (www.xiph.org/ao).
+.br
+It is a morse code learning tool which provides four type of training methods:
+.br
+.PP
+.TP
+.B Blocks
+ Identify blocks of random characters played in morse code.
+.TP
+.B Koch
+ Two morse characters will be played at full speed (20wpm)
+ until you'll be able to identify at least 90 percent of them. 
+ After that, one more character will be added, and so on.
+.TP
+.B File
+ Identify played characters generated from a file.
+.TP
+.B Callsign
+ Identify random callsigns played in morse code.
+.br
+.SH AUTHOR
+This manual page was written by Giuseppe Martino <denever@users.sf.net>,
+for the Debian project (but may be used by others).
