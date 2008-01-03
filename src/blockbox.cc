@@ -130,13 +130,6 @@ void BlockBox::on_btn_play_clicked()
     unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/strpause");
     unsigned int linelen = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/linelen");    
 
-/*
-    unsigned int begin_pause = 2;
-    unsigned int tone = 900;
-    unsigned int keyspeed = 8;
-    unsigned int charpause = 3;
-    unsigned int strpause = 7;
-*/  
     unsigned int strnum = (unsigned int) m_hsl_stringnum.get_value();
     unsigned int strlen = (unsigned int) m_hsl_stringlength.get_value();
 
