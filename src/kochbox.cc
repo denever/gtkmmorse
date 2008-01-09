@@ -74,10 +74,11 @@ sigc::signal<void, std::list<std::string> >& KochBox::signal_exercise_finished()
 
 void KochBox::on_btn_start_clicked()
 {
+/*
     m_btn_start.set_sensitive(false);
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
-    unsigned int tone = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/tone");
+    unsigned int pitch = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch");
     unsigned int charpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/charpause");
     unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/strpause");
     unsigned int linelen = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/linelen");    
@@ -97,7 +98,7 @@ void KochBox::on_btn_start_clicked()
     
     libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 1, linelen);
 
-    current_keyer.set_tone(tone);
+    current_keyer.set_pitch(pitch);
 
     libexercises::Koch koch_exc(charset, strnum, strlen, charitem, skill);
 
@@ -110,6 +111,7 @@ void KochBox::on_btn_start_clicked()
     m_audioout->play();
 
     m_audioout->enqueue_pause(begin_pause*1000);
+*/
 }
 
 void KochBox::on_play_finished()

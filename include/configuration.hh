@@ -41,8 +41,8 @@ public:
     unsigned int get_stringpause();
     void set_linelength(unsigned int);
     unsigned int get_linelength();
-    void set_tone(unsigned int);
-    unsigned int get_tone();
+    void set_pitch(unsigned int);
+    unsigned int get_pitch();
 
 
 private:
@@ -51,6 +51,6 @@ private:
     unsigned int m_charpause;
     unsigned int m_stringpause;
     unsigned int m_linelength;
-    unsigned int m_tone;
+    unsigned int m_pitch;
 };
 

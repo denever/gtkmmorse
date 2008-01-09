@@ -56,7 +56,7 @@ KochSetupBox::KochSetupBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 	m_conf_client->set("/apps/gtkmmorse/koch/charitem", 2.0);
 	m_conf_client->set("/apps/gtkmmorse/koch/stringnumbers",10.0 );
 	m_conf_client->set("/apps/gtkmmorse/koch/stringlength", 3.0 );
-	m_conf_client->set("/apps/gtkmmorse/koch/keyspeed", 10.0 );
+	m_conf_client->set("/apps/gtkmmorse/koch/keyspeed", 12.0 );
 	m_conf_client->set("/apps/gtkmmorse/koch/skill", 1.0);	    
     }
     
@@ -65,7 +65,7 @@ KochSetupBox::KochSetupBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     Gtk::Adjustment adj_charitem(m_conf_client->get_float("/apps/gtkmmorse/koch/charitem"), 2.0, m_txt_chars.get_text().size());
     Gtk::Adjustment adj_stringnumbers(m_conf_client->get_float("/apps/gtkmmorse/koch/stringnumbers"), 1.0, 70.0);
     Gtk::Adjustment adj_stringlength(m_conf_client->get_float("/apps/gtkmmorse/koch/stringlength"), 1.0, 5.0);
-    Gtk::Adjustment adj_keyspeed(m_conf_client->get_float("/apps/gtkmmorse/koch/keyspeed"), 1.0, 10.0);
+    Gtk::Adjustment adj_keyspeed(m_conf_client->get_float("/apps/gtkmmorse/koch/keyspeed"), 12.0, 30.0);
     Gtk::Adjustment adj_skill(m_conf_client->get_float("/apps/gtkmmorse/koch/skill"), 500.0, 1000.0, 50.0);    
 
     m_hsl_keyspeed.set_adjustment(adj_keyspeed);

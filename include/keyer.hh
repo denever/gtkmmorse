@@ -63,14 +63,14 @@ namespace libkeyer
 	    return m_interword;
 	}
 	
-	inline unsigned int dah_tone() const
+	inline unsigned int dah_pitch() const
 	{
-	    return int(m_dah_tone);
+	    return int(m_dah_pitch);
 	}
 
-	inline unsigned int dih_tone() const
+	inline unsigned int dih_pitch() const
 	{
-	    return int(m_dih_tone);
+	    return int(m_dih_pitch);
 	}
 	
     private:
@@ -81,8 +81,8 @@ namespace libkeyer
 	unsigned int m_interch;
 	unsigned int m_interword;
 
-	double m_dih_tone;
-	double m_dah_tone;
+	double m_dih_pitch;
+	double m_dah_pitch;
 
 	void play(unsigned int, double);
 	void char_pause();

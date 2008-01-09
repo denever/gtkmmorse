@@ -49,7 +49,7 @@ namespace gtkmmorsegui
 	Gtk::Frame m_frm_keyspeed;
 	Gtk::Frame m_frm_charpause;
 	Gtk::Frame m_frm_stringpause;
-	Gtk::Frame m_frm_tone;
+	Gtk::Frame m_frm_pitch;
 	Gtk::Frame m_frm_linelen;
 
 	Gtk::Button m_btn_save;
@@ -58,7 +58,7 @@ namespace gtkmmorsegui
 	Gtk::HScale m_hsl_keyspeed;
 	Gtk::HScale m_hsl_charpause;
 	Gtk::HScale m_hsl_stringpause;
-	Gtk::HScale m_hsl_tone;
+	Gtk::HScale m_hsl_pitch;
 	Gtk::HScale m_hsl_linelen;
 
 	Glib::RefPtr<Gnome::Conf::Client> m_conf_client;

@@ -32,7 +32,7 @@ Configuration::Configuration():
     m_charpause(0),
     m_stringpause(0),
     m_linelength(0),
-    m_tone(0)
+    m_pitch(0)
 {}
 
 void Configuration::beginpause(unsigned int v)
@@ -86,12 +86,12 @@ unsigned int Configuration::linelength()
     return m_linelength;
 }
 
-void Configuration::tone(unsigned int v)
+void Configuration::pitch(unsigned int v)
 {
-    m_tone = v;
+    m_pitch = v;
 }
 
-unsigned int Configuration::tone()
+unsigned int Configuration::pitch()
 {
-    return m_tone;
+    return m_pitch;
 }
