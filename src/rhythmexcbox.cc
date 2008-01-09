@@ -5,7 +5,7 @@
     Copyright (C) 2007 Giuseppe "denever" Martino
     begin                : Fri 23 Mar 2007
     email                : denever@users.sourceforge.net
- ***************************************************************************/
+***************************************************************************/
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,85 +26,88 @@
  ***************************************************************************/
 
 #include "blocks.hh"
-#include "blockbox.hh"
+#include "rhythmexcbox.hh"
 #include "resources.hh"
-
-#include <gconfmm.h>
 
 using namespace gtkmmorsegui;
 
-BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
+RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_conf_client(conf_client),
-    m_frm_explanation(m_lbl_explanation),
-    m_btn_play("start")
+    m_frm_msg("Koch exercise"),
+    m_lbl_msg(rhythmexc_explanation),
+    m_btn_repeat("repeat"),
+    m_btn_next("next"),
+    m_btn_start("start"),
+    m_btn_stop("stop")
 {
-    m_lbl_explanation = rhythmexc_explanation;
-    
-    m_btn_play.set_sensitive(false);
-    m_hbb_buttons.pack_start(m_btn_play);
+    m_frm_msg.add(m_lbl_msg);
 
-    pack_start(m_frm_stringlength);    
-    pack_start(m_frm_stringnum);
-    pack_start(m_frm_charset);
+    m_lbl_msg.set_line_wrap();
+
+    pack_start(m_frm_msg);
+    
+    m_btn_repeat.set_sensitive(false);
+    m_btn_next.set_sensitive(false);    
+    m_btn_start.set_sensitive(true);
+    m_btn_stop.set_sensitive(false);
+
+    m_hbb_buttons.add(m_btn_repeat);
+    m_hbb_buttons.add(m_btn_next);    
+    m_hbb_buttons.add(m_btn_stop);
+    m_hbb_buttons.add(m_btn_start);
+    
     pack_start(m_hbb_buttons);
     
-    m_btn_play.signal_clicked().connect( sigc::mem_fun(*this, &BlockBox::on_btn_play_clicked) );
-    m_cmb_charset.signal_changed().connect( sigc::mem_fun(*this, &BlockBox::on_cmb_charset_changed) );
+    m_btn_start.signal_clicked().connect( sigc::mem_fun(*this, &RhythmExcBox::on_btn_start_clicked) );
 }
 
-BlockBox::~BlockBox()
+RhythmExcBox::~RhythmExcBox()
 {}
 
-sigc::signal<void, unsigned int>& BlockBox::signal_exercise_started()
+sigc::signal<void, unsigned int>& RhythmExcBox::signal_exercise_started()
 {
     return m_started;
 }
 
-sigc::signal<void, std::list<std::string> >& BlockBox::signal_exercise_finished()
+sigc::signal<void, std::list<std::string> >& RhythmExcBox::signal_exercise_finished()
 {
     return m_finished;
 }
 
-void BlockBox::on_btn_play_clicked()
+void RhythmExcBox::on_btn_start_clicked()
 {
-    m_btn_play.set_sensitive(false);
+    m_btn_start.set_sensitive(false);
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
-    unsigned int tone = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/tone");
     unsigned int keyspeed = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed");
-    unsigned int charpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/charpause");
-    unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/strpause");
-    unsigned int linelen = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/linelen");    
-
-    unsigned int strnum = (unsigned int) m_hsl_stringnum.get_value();
-    unsigned int strlen = (unsigned int) m_hsl_stringlength.get_value();
+    unsigned int charpause = 3;
+    unsigned int strpause = 12;
+    unsigned int strnum = 12;
 
     m_started.emit(strnum);
 
     m_audioout = new libaudiostream::oastream();
 
-    m_audioout->play_finished().connect( sigc::mem_fun(*this, &BlockBox::on_play_finished) );
+    m_audioout->play_finished().connect( sigc::mem_fun(*this, &RhythmExcBox::on_play_finished) );
     
-    libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 1, linelen);
+    libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 900, 850);
 
-    current_keyer.set_tone(tone);
+    libexercises::Blocks rhythm_exc(strnum, libexercises::skill5, 5);
 
-    libexercises::Blocks blocks_exc(strnum, libexercises::skill5 | libexercises::submixed, strlen);
-
-    m_exercise_strings = blocks_exc.stringtok();
+    m_exercise_strings = rhythm_exc.stringtok();
     
     m_audioout->enqueue_pause(begin_pause*1000);
     
-    current_keyer<<blocks_exc;
+    current_keyer << rhythm_exc;
     
     m_audioout->play();
 
     m_audioout->enqueue_pause(begin_pause*1000);
 }
 
-void BlockBox::on_play_finished()
+void RhythmExcBox::on_play_finished()
 {
     delete m_audioout;
-    m_btn_play.set_sensitive(true);
+    m_btn_start.set_sensitive(true);
     m_finished.emit(m_exercise_strings);    
 }

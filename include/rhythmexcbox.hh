@@ -25,20 +25,20 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef BLOCKBOX_HH
-#define BLOCKBOX_HH
+#ifndef RHYTHMEXCBOX_HH
+#define RHYTHMEXCBOX_HH
 
 #include "astream.hh"
 
-#include <gtkmm/box.h>
-#include <gtkmm/frame.h>
+
 #include <gtkmm/scale.h>
 #include <gtkmm/label.h>
+#include <gtkmm/frame.h>
+#include <gtkmm/table.h>
 #include <gtkmm/button.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/liststore.h>
-#include <gtkmm/alignment.h>
 #include <gtkmm/adjustment.h>
 #include <gtkmm/checkbutton.h>
 
@@ -49,11 +49,11 @@
 
 namespace gtkmmorsegui
 {
-    class BlockBox : public Gtk::VBox
+    class RhythmExcBox : public Gtk::VBox
     {
     public:
-	BlockBox(Glib::RefPtr<Gnome::Conf::Client>);
-	~BlockBox();
+	RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client>);
+	~RhythmExcBox();
 
 	sigc::signal<void, unsigned int>& signal_exercise_started();
 	sigc::signal<void, std::list<std::string> >& signal_exercise_finished();
@@ -65,17 +65,21 @@ namespace gtkmmorsegui
 	
 	std::list< std::string > m_exercise_strings;
 
-	Gtk::Frame m_frm_explanation;
-
-	Gtk::Label m_lbl_explanation;
-	Gtk::Button m_btn_play;
-
+	Gtk::Frame m_frm_msg;
+	Gtk::Label m_lbl_msg;
+	
 	Gtk::HButtonBox m_hbb_buttons;
+	
+	Gtk::Button m_btn_repeat;
+	Gtk::Button m_btn_next;	
+	Gtk::Button m_btn_start;
+	Gtk::Button m_btn_stop;
 	
 	sigc::signal<void, unsigned int> m_started;
 	sigc::signal<void, std::list<std::string> > m_finished;
 	
-	void on_btn_play_clicked();
+	void on_btn_start_clicked();
+	void on_play_finished();
     };
 }
 
