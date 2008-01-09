@@ -35,7 +35,7 @@ namespace libkeyer
     {
     public:
 	explicit Keyer(libaudiostream::oastream*, unsigned int, unsigned int =3,
-		      unsigned int=2, unsigned int=1, unsigned int=3);
+		      unsigned int=2, unsigned int=900, unsigned int=900);
 
 	Keyer(const Keyer&);
 	Keyer& operator<<(const unsigned int&);
@@ -62,25 +62,15 @@ namespace libkeyer
 	{
 	    return m_interword;
 	}
-
-	inline unsigned int dot_len() const
-	{
-	    return m_dot;
-	}
-
-	inline unsigned int line_len() const
-	{
-	    return m_line;
-	}
 	
-	inline unsigned int tone() const
+	inline unsigned int dah_tone() const
 	{
-	    return int(m_tone);
+	    return int(m_dah_tone);
 	}
 
-	inline void set_tone(unsigned int t)
+	inline unsigned int dih_tone() const
 	{
-	    m_tone = t;
+	    return int(m_dih_tone);
 	}
 	
     private:
@@ -91,12 +81,10 @@ namespace libkeyer
 	unsigned int m_interch;
 	unsigned int m_interword;
 
-	double m_tone;
+	double m_dah_tone;
+	double m_dih_tone;	
 
-	unsigned int m_dot;
-	unsigned int m_line;
-
-	void play(unsigned int);
+	void play(unsigned int, double);
 	void char_pause();
 	void string_pause();
     };

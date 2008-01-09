@@ -44,51 +44,40 @@ static const morse_symbol map[] =
     0x3805, 0x1805, 0x0805
 };
 
-Keyer::Keyer(oastream* audio, unsigned int speed, unsigned int ch, unsigned int wd, unsigned int d, unsigned int l)
-    :  m_audio(audio), m_speed(speed), m_interch(ch), m_interword(wd), m_tone(900.0), m_dot(d), m_line(l)
+const unsigned int dih = 1;
+const unsigned int dah = 3;
+
+Keyer::Keyer(oastream* audio, unsigned int speed, unsigned int ch, unsigned int wd, unsigned int dih_tone, unsigned int dah_tone)
+    :  m_audio(audio), m_speed(speed), m_interch(ch), m_interword(wd), m_dih_tone(dih_tone), m_dah_tone(dah_tone)
 {
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
+    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*dih);
     m_count = int(60000/dpm);
 }
 
 void Keyer::set_speed(unsigned int speed)
 {
     m_speed = speed;
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
+    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*dih);
     m_count = int(60000/dpm);
 }
 
 void Keyer::set_charpause_len(unsigned int len)
 {   
     m_interch = len;
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
+    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*dih);
     m_count = int( 60000/dpm );
 }
 
 void Keyer::set_stringpause_len(unsigned int len)
 {    
     m_interword = len;
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
+    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*dih);
     m_count = int( 60000/dpm );
 }
 
-void Keyer::set_dot_len(unsigned int len)
+void Keyer::play(unsigned int n, double tone)
 {
-    m_dot = len;
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
-    m_count = int( 60000/dpm );
-}
-
-void Keyer::set_line_len(unsigned int len)
-{
-    m_line = len;
-    unsigned int dpm = m_speed*((36 + 4 * m_interch + m_interword)*m_dot);
-    m_count = int( 60000/dpm );
-}
-
-void Keyer::play(unsigned int n)
-{
-    m_audio->enqueue_sine(m_count * n, m_tone);
+    m_audio->enqueue_sine(m_count * n, tone);
     m_audio->enqueue_pause(m_count);
 }   
 
@@ -100,10 +89,10 @@ Keyer& Keyer::operator<<(const morse_symbol& input)
     while(size != 0)
     {
 	if( (data & 0x8000) == 0)
-	    play(m_line);
+	    play(dah, m_dah_tone);
 
 	if( (data & 0x8000) == 0x8000)
-	    play(m_dot);
+	    play(dih, m_dih_tone);
 
 	data = data << 1;
 
