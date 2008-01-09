@@ -81,8 +81,8 @@ namespace libkeyer
 	unsigned int m_interch;
 	unsigned int m_interword;
 
+	double m_dih_tone;
 	double m_dah_tone;
-	double m_dih_tone;	
 
 	void play(unsigned int, double);
 	void char_pause();
