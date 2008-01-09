@@ -124,11 +124,10 @@ void BlockBox::on_btn_play_clicked()
 	m_charset |= libexercises::submixed;
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
-    unsigned int tone = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/tone");
+    unsigned int pitch = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch");
     unsigned int keyspeed = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed");
     unsigned int charpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/charpause");
     unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/strpause");
-    unsigned int linelen = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/linelen");    
 
     unsigned int strnum = (unsigned int) m_hsl_stringnum.get_value();
     unsigned int strlen = (unsigned int) m_hsl_stringlength.get_value();
@@ -139,9 +138,7 @@ void BlockBox::on_btn_play_clicked()
 
     m_audioout->play_finished().connect( sigc::mem_fun(*this, &BlockBox::on_play_finished) );
     
-    libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 1, linelen);
-
-    current_keyer.set_tone(tone);
+    libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, pitch);
 
     libexercises::Blocks blocks_exc(strnum, m_charset, strlen);
 
