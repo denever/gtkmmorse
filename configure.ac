@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([gtkmmorse], [0.9.16], [Giuseppe Martino denever@users.sf.net])
+AC_INIT([gtkmmorse], [0.9.18], [Giuseppe Martino denever@users.sf.net])
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
