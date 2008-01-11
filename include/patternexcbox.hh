@@ -29,6 +29,7 @@
 #define PATTERNEXCBOX_HH
 
 #include "astream.hh"
+#include "radiobuttons.hh"
 
 #include <gtkmm/scale.h>
 #include <gtkmm/label.h>
@@ -36,9 +37,6 @@
 #include <gtkmm/table.h>
 #include <gtkmm/button.h>
 #include <gtkmm/buttonbox.h>
-#include <gtkmm/radiobutton.h>
-#include <gtkmm/radiobuttongroup.h>
-
 
 #include <gconfmm.h>
 
@@ -81,7 +79,7 @@ namespace gtkmmorsegui
 	Gtk::Table m_tbl_check2;
 	Gtk::Table m_tbl_check3;
 
-	Gtk::RadioButtonGroup m_txt_check[3][4][5];	
+	gtkmmorsegui::RadioButtons m_rbt_check[3][4][5];	
 	
 	sigc::signal<void, unsigned int> m_started;
 	sigc::signal<void, std::list<std::string> > m_finished;

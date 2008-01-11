@@ -65,15 +65,23 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 
     for(unsigned int i = 0; i < 4; i++)
 	for(unsigned int j = 0; j < 5; j++)
-	    m_tbl_check1.attach(m_txt_check[0][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
+	    m_tbl_check1.attach(m_rbt_check[0][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
 
     for(unsigned int i = 0; i < 4; i++)
 	for(unsigned int j = 0; j < 5; j++)
-	    m_tbl_check2.attach(m_txt_check[1][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
+	    m_tbl_check2.attach(m_rbt_check[1][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
     
     for(unsigned int i = 0; i < 4; i++)
 	for(unsigned int j = 0; j < 5; j++)
-	    m_tbl_check3.attach(m_txt_check[2][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
+	    m_tbl_check3.attach(m_rbt_check[2][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
+
+    m_tbl_check1.set_row_spacings(16);
+    m_tbl_check2.set_row_spacings(16);
+    m_tbl_check3.set_row_spacings(16);    
+
+    m_tbl_check1.set_col_spacings(10);
+    m_tbl_check2.set_col_spacings(10);
+    m_tbl_check3.set_col_spacings(10);    
 
     m_box_check.pack_start(m_tbl_check1);
     m_box_check.pack_start(m_tbl_check2);
@@ -172,7 +180,7 @@ void PatternExcBox::on_btn_start_clicked()
     
     libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 900, 850);
 
-    libexercises::Blocks pattern_exc(strnum, libexercises::skill5, 5);
+    libexercises::Blocks pattern_exc(strnum, "hf", 5);
 
     m_exercise_strings = pattern_exc.stringtok();
     
