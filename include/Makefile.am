@@ -8,6 +8,6 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-noinst_HEADERS = astream.hh blocks.hh exercise.hh mainwindow.hh random.hh setupbox.hh\
+noinst_HEADERS = astream.hh blocks.hh mainwindow.hh random.hh setupbox.hh\
 	audioexcep.hh blockbox.hh keyer.hh resources.hh skill.hh keycheckentry.hh\
 	rhythmexcbox.hh wocheckbutton.hh patternexcbox.hh radiobuttons.hh
