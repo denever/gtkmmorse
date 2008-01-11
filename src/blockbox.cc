@@ -31,16 +31,16 @@
 
 #include <gconfmm.h>
 
+std::string charsets[] = {group_chars1, group_chars2, group_chars3, group_chars4, group_chars5, group_numbrs}; 
+
 using namespace gtkmmorsegui;
 
 BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_conf_client(conf_client),
-    m_charset(0),
     m_frm_stringlength(insert_strlen),
     m_frm_stringnum(insert_strnum),
     m_frm_charset(dlg_charset_title),
     m_btn_play("start"),
-    m_btn_submixed(dlg_charset2_choice8),
     m_adj_stringlength(5.0, 1.0, 20.0),
     m_adj_stringnum(3.0, 1.0, 70.0)
 {
@@ -65,18 +65,17 @@ BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_frm_stringlength.add(m_hsl_stringlength);
     m_frm_stringnum.add(m_hsl_stringnum);
 
-    append_charset(libexercises::skill1, dlg_charset_choice1);
-    append_charset(libexercises::skill2, dlg_charset_choice2);
-    append_charset(libexercises::skill3, dlg_charset_choice3);
-    append_charset(libexercises::skill4, dlg_charset_choice4);
-    append_charset(libexercises::skill5, dlg_charset_choice5);
-    append_charset(libexercises::skill6, dlg_charset_choice6);
+    append_charset(0, dlg_charset_choice1);
+    append_charset(1, dlg_charset_choice2);
+    append_charset(2, dlg_charset_choice3);
+    append_charset(3, dlg_charset_choice4);
+    append_charset(4, dlg_charset_choice5);
+    append_charset(5, dlg_charset_choice6);
 
     m_ali_charset.set_padding(70,70,70,70);
     m_ali_charset.add(m_cmb_charset);
     m_frm_charset.add(m_ali_charset);
     
-    m_hbb_buttons.pack_start(m_btn_submixed);
     m_hbb_buttons.pack_start(m_btn_play);
     
     pack_start(m_frm_stringlength);    
@@ -118,10 +117,7 @@ void BlockBox::on_btn_play_clicked()
     m_btn_play.set_sensitive(false);
     
     Gtk::TreeModel::Row row = *m_cmb_charset.get_active();
-    m_charset = row[m_mod_col.m_col_id];
-    
-    if(m_btn_submixed.get_active())
-	m_charset |= libexercises::submixed;
+    std::string m_charset = charsets[row[m_mod_col.m_col_id]];
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
     unsigned int pitch = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch");

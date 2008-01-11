@@ -77,8 +77,6 @@ namespace gtkmmorsegui
 
 	Glib::RefPtr<Gnome::Conf::Client> m_conf_client;	
 
-	unsigned int m_charset;
-
 	libaudiostream::oastream* m_audioout;
 	
 	std::list< std::string > m_exercise_strings;
@@ -91,7 +89,6 @@ namespace gtkmmorsegui
 	
 	Gtk::Button m_btn_play;
 	Gtk::HButtonBox m_hbb_buttons;
-	Gtk::CheckButton m_btn_submixed;
 	
 	Gtk::HScale m_hsl_stringlength;
 	Gtk::HScale m_hsl_stringnum;
