@@ -30,7 +30,7 @@
 
 #include "blockbox.hh"
 #include "setupbox.hh"
-
+#include "checkbox.hh"
 #include "rhythmexcbox.hh"
 #include "patternexcbox.hh"
 
@@ -52,9 +52,11 @@ namespace gtkmmorsegui
     private:
 	Gtk::Button m_btn_quit;
 	
-//	Gtk::HBox m_box_main;
+
 	Gtk::VBox m_box_left;
 	Gtk::VBox m_box_right;	
+
+	Gtk::HBox m_box_mainblock;
 
 	Gtk::Notebook m_nbkmain;
 
@@ -62,10 +64,7 @@ namespace gtkmmorsegui
 	gtkmmorsegui::PatternExcBox m_box_pattern;		
 	gtkmmorsegui::SetupBox m_box_setup;
 	gtkmmorsegui::BlockBox m_box_block;
-
-//	gtkmmorsegui::KochBox m_box_koch;
-//	gtkmmorsegui::CheckBox m_box_check;
-//	gtkmmorsegui::KochSetupBox m_box_kochsetup;
+	gtkmmorsegui::CheckBox m_box_check;
 	
 	void on_btn_quit_clicked();
     };
