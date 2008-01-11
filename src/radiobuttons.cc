@@ -22,7 +22,7 @@ using namespace gtkmmorsegui;
 
 RadioButtons::RadioButtons() :
   m_rbt_firstpattern("@"),
-  m_rbt_seconpattern("*")
+  m_rbt_seconpattern("#")
 {
   Gtk::RadioButton::Group group = m_rbt_firstpattern.get_group();
   m_rbt_seconpattern.set_group(group);
