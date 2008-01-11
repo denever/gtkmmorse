@@ -9,9 +9,8 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 bin_PROGRAMS = gtkmmorse
-gtkmmorse_SOURCES = astream.cc blockbox.cc checkbox.cc exercise.cc main.cc qrz.cc setupbox.cc\
-		 blocks.cc keyer.cc mainwindow.cc random.cc kochsetupbox.cc rhythmexcbox.cc
-#configuration.cc
+gtkmmorse_SOURCES = astream.cc blockbox.cc exercise.cc main.cc qrz.cc setupbox.cc\
+		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc
 gtkmmorse_CXXFLAGS = -ansi -Wall -pedantic -g -ggdb
 gtkmmorse_LDADD = $(AO_LIBS) $(GTKMM_LIBS) $(GCONFMM_LIBS) $(GTHREAD_LIBS)
 INCLUDES = -I$(top_srcdir)/include  $(AO_CFLAGS) $(GTKMM_CFLAGS) $(GCONFMM_CFLAGS) $(GTHREAD_CFLAGS)

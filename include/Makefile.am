@@ -10,7 +10,7 @@
 
 noinst_HEADERS = astream.hh blocks.hh configuration.hh exercise.hh mainwindow.hh random.hh setupbox.hh\
 	audioexcep.hh blockbox.hh checkbox.hh keyer.hh qrz.hh resources.hh skill.hh keycheckentry.hh\
-	kochsetupbox.hh rhythmexcbox.hh
+	rhythmexcbox.hh
 
 
 
