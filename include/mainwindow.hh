@@ -63,7 +63,7 @@ namespace gtkmmorsegui
 	gtkmmorsegui::SetupBox m_box_setup;
 	gtkmmorsegui::BlockBox m_box_block;
 	gtkmmorsegui::CheckBox m_box_check;
-	gtkmmorsegui::KochSetupBox m_box_kochsetup;
+//	gtkmmorsegui::KochSetupBox m_box_kochsetup;
 	
 	void on_btn_quit_clicked();
     };
