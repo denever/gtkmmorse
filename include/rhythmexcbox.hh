@@ -29,7 +29,6 @@
 #define RHYTHMEXCBOX_HH
 
 #include "astream.hh"
-#include "checkbox.hh"
 
 #include <gtkmm/scale.h>
 #include <gtkmm/label.h>

@@ -62,8 +62,8 @@ MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_btn_quit.signal_clicked().connect( sigc::mem_fun(*this, &MainWindow::on_btn_quit_clicked) );
 
-    m_box_block.signal_exercise_started().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_started) );
-    m_box_block.signal_exercise_finished().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_finished) );    
+//    m_box_block.signal_exercise_started().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_started) );
+//    m_box_block.signal_exercise_finished().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_finished) );    
 }
 
 MainWindow::~MainWindow()

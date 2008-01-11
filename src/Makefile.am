@@ -9,7 +9,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 bin_PROGRAMS = gtkmmorse
-gtkmmorse_SOURCES = astream.cc blockbox.cc exercise.cc main.cc qrz.cc setupbox.cc\
+gtkmmorse_SOURCES = astream.cc blockbox.cc exercise.cc main.cc setupbox.cc\
 		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc
 gtkmmorse_CXXFLAGS = -ansi -Wall -pedantic -g -ggdb
 gtkmmorse_LDADD = $(AO_LIBS) $(GTKMM_LIBS) $(GCONFMM_LIBS) $(GTHREAD_LIBS)
