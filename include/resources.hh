@@ -134,7 +134,7 @@
 #define errmsg_fragment   "Fragment error"
 #define errmsg_stereo     "Stereo error"
 
-#define rhythmexc_explanation "This first exercise is to teach the student to hear and begin to become accustumed to hearing the different overall rhythms of sound and silence. Five letter random groups are going to be sent. At first these will all be unknown letters. As you hear each acoustic pattern of a letter in a five-letter group, you have to put a @ in the place which corresponds to the position of that sound pattern within its group."
+#define rhythmexc_explanation "This first exercise is to teach the student to hear and begin to become accustumed to hearing the different overall rhythms of sound and silence. Five letter random groups are going to be sent. At first these will all be unknown letters. As you hear each acoustic pattern of a letter in a five-letter group, you have to check the checkbutton in the place which corresponds to the position of that sound pattern within its group."
 
 #define patternexc_explanation "This second exercise is to start to recognize the differences in rhythm-pattern between two quite different-sounding letters, and become familiar with the sound pattern of each character. This begins by introducing the two first character just as sound patterns. At this time they are not yet to be identified with their printed letters but with two symbol. @ for patter one and # for pattern two. You have to put @ and # in the place which corresponds respectively pattern one and pattern two."
 
