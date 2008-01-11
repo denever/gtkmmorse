@@ -36,8 +36,7 @@ RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_frm_msg("Exercise explanation"),
     m_frm_checkboard("Check board"),    
     m_lbl_msg(rhythmexc_explanation),
-    m_btn_start("start"),
-    m_btn_stop("stop"),
+    m_btn_start("Start"),
     m_tbl_check1(4,5),
     m_tbl_check2(4,5),
     m_tbl_check3(4,5)   
@@ -49,10 +48,8 @@ RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     pack_start(m_frm_msg);
     
     m_btn_start.set_sensitive(true);
-    m_btn_stop.set_sensitive(false);
     m_frm_checkboard.set_sensitive(false);    
 
-    m_hbb_buttons.add(m_btn_stop);
     m_hbb_buttons.add(m_btn_start);
     
     pack_start(m_hbb_buttons);
@@ -96,7 +93,6 @@ sigc::signal<void, std::list<std::string> >& RhythmExcBox::signal_exercise_finis
 void RhythmExcBox::on_btn_start_clicked()
 {
     m_btn_start.set_sensitive(false);
-    m_btn_stop.set_sensitive(true);
     m_frm_checkboard.set_sensitive(true);
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
@@ -113,7 +109,7 @@ void RhythmExcBox::on_btn_start_clicked()
     
     libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 900, 850);
 
-    libexercises::Blocks rhythm_exc(strnum, libexercises::skill5, 5);
+    libexercises::Blocks rhythm_exc(strnum, group_chars5, 5);
 
     m_exercise_strings = rhythm_exc.stringtok();
     
@@ -130,7 +126,6 @@ void RhythmExcBox::on_play_finished()
 {
     delete m_audioout;
     m_btn_start.set_sensitive(true);
-    m_btn_stop.set_sensitive(false);    
     m_frm_checkboard.set_sensitive(false);
     m_finished.emit(m_exercise_strings);    
 }

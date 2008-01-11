@@ -71,7 +71,6 @@ namespace gtkmmorsegui
 	Gtk::HButtonBox m_hbb_buttons;
 	
 	Gtk::Button m_btn_start;
-	Gtk::Button m_btn_stop;
 
 	Gtk::HBox m_box_check;
 	
