@@ -32,38 +32,27 @@ using namespace gtkmmorsegui;
 
 MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_btn_quit("Quit"),
-//    m_box_koch(conf_client),
     m_box_rhythm(conf_client),
+    m_box_pattern(conf_client),    
     m_box_setup(conf_client),
     m_box_block(conf_client)
-//    m_box_kochsetup(conf_client)
 {
     set_title(mainwindow_title);
     set_border_width(10);
     set_default_size(800, 300);
     add(m_box_right);
 
-//    m_box_main.pack_start(m_box_left);
-//    m_box_main.pack_start(
-
     m_box_right.pack_start(m_nbkmain);
     m_box_right.pack_start(m_btn_quit, Gtk::PACK_SHRINK);
-    
-//    m_box_left.pack_start(m_box_check);
-    
 
-//    m_nbkmain.append_page(m_box_koch, mainwindow_item2);
     m_nbkmain.append_page(m_box_rhythm, mainwindow_item1);    
+    m_nbkmain.append_page(m_box_pattern, mainwindow_item2);
     m_nbkmain.append_page(m_box_setup, mainwindow_item4);    
-//    m_nbkmain.append_page(m_box_kochsetup, mainwindow_item5);
     m_nbkmain.append_page(m_box_block, mainwindow_item6);
     
     show_all_children();
     
     m_btn_quit.signal_clicked().connect( sigc::mem_fun(*this, &MainWindow::on_btn_quit_clicked) );
-
-//    m_box_block.signal_exercise_started().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_started) );
-//    m_box_block.signal_exercise_finished().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_finished) );    
 }
 
 MainWindow::~MainWindow()

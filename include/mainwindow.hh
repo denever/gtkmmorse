@@ -30,9 +30,9 @@
 
 #include "blockbox.hh"
 #include "setupbox.hh"
-//#include "checkbox.hh"
-//#include "kochsetupbox.hh"
+
 #include "rhythmexcbox.hh"
+#include "patternexcbox.hh"
 
 #include <gtkmm/window.h>
 #include <gtkmm/button.h>
@@ -58,7 +58,8 @@ namespace gtkmmorsegui
 
 	Gtk::Notebook m_nbkmain;
 
-	gtkmmorsegui::RhythmExcBox m_box_rhythm;	
+	gtkmmorsegui::RhythmExcBox m_box_rhythm;
+	gtkmmorsegui::PatternExcBox m_box_pattern;		
 	gtkmmorsegui::SetupBox m_box_setup;
 	gtkmmorsegui::BlockBox m_box_block;
 
