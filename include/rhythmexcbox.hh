@@ -80,73 +80,11 @@ namespace gtkmmorsegui
 	Gtk::Table m_tbl_check2;
 	Gtk::Table m_tbl_check3;
 
-	Gtk::Entry m_txt_check111;
-	Gtk::Entry m_txt_check112;
-	Gtk::Entry m_txt_check113;
-	Gtk::Entry m_txt_check114;
-	Gtk::Entry m_txt_check115;
-	Gtk::Entry m_txt_check121;
-	Gtk::Entry m_txt_check122;
-	Gtk::Entry m_txt_check123;
-	Gtk::Entry m_txt_check124;
-	Gtk::Entry m_txt_check125;
-	Gtk::Entry m_txt_check131;
-	Gtk::Entry m_txt_check132;
-	Gtk::Entry m_txt_check133;
-	Gtk::Entry m_txt_check134;
-	Gtk::Entry m_txt_check135;
-	Gtk::Entry m_txt_check141;
-	Gtk::Entry m_txt_check142;
-	Gtk::Entry m_txt_check143;
-	Gtk::Entry m_txt_check144;
-	Gtk::Entry m_txt_check145;
-
-	
-	Gtk::Entry m_txt_check211;
-	Gtk::Entry m_txt_check212;
-	Gtk::Entry m_txt_check213;
-	Gtk::Entry m_txt_check214;
-	Gtk::Entry m_txt_check215;
-	Gtk::Entry m_txt_check221;
-	Gtk::Entry m_txt_check222;
-	Gtk::Entry m_txt_check223;
-	Gtk::Entry m_txt_check224;
-	Gtk::Entry m_txt_check225;
-	Gtk::Entry m_txt_check231;
-	Gtk::Entry m_txt_check232;
-	Gtk::Entry m_txt_check233;
-	Gtk::Entry m_txt_check234;
-	Gtk::Entry m_txt_check235;
-	Gtk::Entry m_txt_check241;
-	Gtk::Entry m_txt_check242;
-	Gtk::Entry m_txt_check243;
-	Gtk::Entry m_txt_check244;
-	Gtk::Entry m_txt_check245;
-
-	Gtk::Entry m_txt_check311;
-	Gtk::Entry m_txt_check312;
-	Gtk::Entry m_txt_check313;	
-	Gtk::Entry m_txt_check314;
-	Gtk::Entry m_txt_check315;
-	Gtk::Entry m_txt_check321;	
-	Gtk::Entry m_txt_check322;
-	Gtk::Entry m_txt_check323;
-	Gtk::Entry m_txt_check324;
-	Gtk::Entry m_txt_check325;
-	Gtk::Entry m_txt_check331;	
-	Gtk::Entry m_txt_check332;
-	Gtk::Entry m_txt_check333;
-	Gtk::Entry m_txt_check334;
-	Gtk::Entry m_txt_check335;
-	Gtk::Entry m_txt_check341;	
-	Gtk::Entry m_txt_check342;
-	Gtk::Entry m_txt_check343;
-	Gtk::Entry m_txt_check344;
-	Gtk::Entry m_txt_check345;
+	Gtk::CheckButton m_txt_check[3][4][5];
 	
 	sigc::signal<void, unsigned int> m_started;
 	sigc::signal<void, std::list<std::string> > m_finished;
-	
+
 	void on_btn_start_clicked();
 	void on_play_finished();
     };
