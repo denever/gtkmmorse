@@ -25,29 +25,45 @@
 #ifndef BLOCKS_H
 #define BLOCKS_H
 
-#include "exercise.hh"
-#include "skill.hh"
+#include "keyer.hh"
 
+#include <list>
 #include <string>
 
 namespace libexercises
 {
-    class Blocks: public Exercise
+    class Blocks
     {
     public:
-	Blocks(unsigned int, unsigned int, unsigned int);	
+	Blocks();
+	Blocks(unsigned int, std::string, unsigned int);	
 	Blocks(const Blocks&);
 	~Blocks();
 
-    private:
-	void m_prepare_mixed();
-	void m_prepare_submixed();
-	void m_prepare_ordered();	
-	unsigned int share();
-	std::string randstring(std::string, unsigned int);
-	std::string gen(std::string, unsigned int);
+	inline unsigned int string_len() const 
+	{
+	    return m_num_chars;
+	}
 
-	bool execute();
+	inline unsigned int len() const
+	{
+	    return m_num_strings;
+	}
+
+	inline std::string get_string() const
+	{
+	    return m_strings;
+	}
+
+	std::list<std::string> stringtok();	
+
+    private:
+	std::string m_strings;
+	unsigned int m_num_chars;
+	unsigned int m_num_strings;    
+
+	std::string randstring(std::string, unsigned int);
     };
+    libkeyer::Keyer& operator<<(libkeyer::Keyer&, const Blocks&);    
 }
 #endif //BLOCKS_H

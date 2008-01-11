@@ -24,25 +24,16 @@
 #include "blocks.hh"
 #include "random.hh"
 
-using namespace std;
 using namespace libexercises;
 
-// These are group of chars and numbers ordered by skill
-#define group_chars1 string("eishtmo")
-#define group_chars2 string("awjuv")
-#define group_chars3 string("ndbg")
-#define group_chars4 string("rplf")
-#define group_chars5 string("kcyqzx")
-#define group_numbrs string("0123456789")
-
- // give a random string from input
-string Blocks::randstring(string input, unsigned int num)
+// give a random string from input
+std::string Blocks::randstring(std::string input, unsigned int num)
 {
     unsigned int size = input.size();
 
     librandom::Random RND;
 
-    string output;
+    std::string output;
     output.clear();
 
     while(num != 0)
@@ -56,129 +47,19 @@ string Blocks::randstring(string input, unsigned int num)
     return output;
 }
 
-string Blocks::gen(string input, unsigned int num) // output a string (of size num) chars taked from input
+Blocks::Blocks(): m_num_chars(0), m_num_strings(0)
 {
-    string output;
-    output.clear();
-    
-    unsigned int i = 0;
-    while(num)
-    {
-	output += input[i];
-	num--;
-	i++;
-	if(i==input.size()) i=0;
-    }
-    return output;
-}	
-
-unsigned int Blocks::share()
-{
-    // Count number of group_chars used in this skill
-        
-    unsigned int val = m_skill & 0x3F;
-    unsigned int counter = 0;
-    do
-    {
-	if(val & 0x01)
-	    counter++;
-	
-	val = val >> 1;
-    }
-    while(val);
-     
-    unsigned int total = m_num_strings*m_num_chars;
-    unsigned int bound = total/counter;
-    
-    if(total %  counter)
-	bound++;
-
-    return bound;  // bound is number of chars on total that will belong to a group_chars    
+    m_strings.clear();
 }
 
-Blocks::Blocks(unsigned int num, unsigned int s, unsigned int numch): Exercise(num,numch,s)
+Blocks::Blocks(unsigned int num, std::string symbols, unsigned int numch): m_num_chars(numch), m_num_strings(num)
 {
-    if(m_skill & mixed)
-	m_prepare_mixed();
-
-    if(m_skill & submixed)
-	m_prepare_submixed();
-
-    if((m_skill & 0xC0) == 0)
-	m_prepare_ordered();
+    m_strings = randstring(symbols, m_num_chars * m_num_strings);
 }
 
-void Blocks::m_prepare_mixed()
+Blocks::Blocks(const Blocks& cpy)
 {
-    if(m_skill & chars1) // if is used in skill group_chars1
-	m_strings += group_chars1;
-	
-    if(m_skill & chars2) // So on..
-	m_strings += group_chars2;
-	    
-    if(m_skill & chars3)
-	m_strings += group_chars3;
-	
-    if(m_skill & chars4)
-	m_strings += group_chars4;
-	    
-    if(m_skill & chars5)
-	    m_strings += group_chars5;
-	    
-    if(m_skill & numbrs)
-	m_strings += group_numbrs;
-	
-    m_strings = randstring(m_strings, m_num_chars * m_num_strings);
-}
-
-void Blocks::m_prepare_submixed()
-{
-    unsigned int bound = share();
-
-    if(m_skill & chars1) // if is used in skill group_chars1
-	m_strings += randstring(group_chars1, bound);
-	
-    if(m_skill & chars2) // So on..
-	m_strings += randstring(group_chars2, bound);
-	    
-    if(m_skill & chars3)
-	m_strings += randstring(group_chars3, bound);
-	
-    if(m_skill & chars4)
-	m_strings += randstring(group_chars4, bound);
-	    
-    if(m_skill & chars5)
-	m_strings += randstring(group_chars5, bound);
-    
-    if(m_skill & numbrs)
-	m_strings += randstring(group_numbrs, bound);
-
-    m_strings = m_strings.substr(0, m_num_chars * m_num_strings);
-}
-
-void Blocks::m_prepare_ordered()
-{
-    unsigned int bound = share();
-    
-    if(m_skill & chars1)
-	m_strings += gen(group_chars1, bound);
-
-    if(m_skill & chars2) // So on..
-	m_strings += gen(group_chars2, bound);
-    
-    if(m_skill & chars3)
-	m_strings += gen(group_chars3, bound);
-
-    if(m_skill & chars4)
-	m_strings += gen(group_chars4, bound);
-    
-    if(m_skill & chars5)
-	m_strings += gen(group_chars5, bound);
-    
-    if(m_skill & numbrs)
-	m_strings += gen(group_numbrs, bound);
-
-    m_strings = m_strings.substr(0, m_num_chars * m_num_strings);
+    m_strings = cpy.m_strings;
 }
 
 Blocks::~Blocks()
@@ -186,7 +67,38 @@ Blocks::~Blocks()
     m_strings.clear();
 }
 
-bool Blocks::execute()
+std::list< std::string > Blocks::stringtok()
 {
-    return true;
+    typedef std::string::const_iterator c_str; 
+    unsigned int i = 0;
+
+    std::list< std::string > tmplst;
+    std::string tmp;
+    
+    for(c_str it = m_strings.begin(); it != m_strings.end(); it++) 
+    {
+	if(i == m_num_chars)
+	{
+	    tmplst.push_back(tmp);
+	    tmp.clear();
+	    i = 0;
+	}
+	tmp.push_back(*it);
+	i++;
+    }
+
+    tmplst.push_back(tmp);
+    tmp.clear();
+	  
+    return tmplst;
+}
+
+libkeyer::Keyer& libexercises::operator<<(libkeyer::Keyer& out, const Blocks& exc)
+{
+    unsigned int strlen = exc.string_len();
+
+    for(unsigned int i=0; i< exc.len(); i++)
+	out << exc.get_string().substr(i* strlen, strlen);
+
+    return out;
 }
