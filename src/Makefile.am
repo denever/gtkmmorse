@@ -10,7 +10,7 @@
 
 bin_PROGRAMS = gtkmmorse
 gtkmmorse_SOURCES = astream.cc blockbox.cc exercise.cc main.cc setupbox.cc\
-		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc
+		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc patternexcbox.cc radiobuttons.cc
 gtkmmorse_CXXFLAGS = -ansi -Wall -pedantic -g -ggdb
 gtkmmorse_LDADD = $(AO_LIBS) $(GTKMM_LIBS) $(GCONFMM_LIBS) $(GTHREAD_LIBS)
 INCLUDES = -I$(top_srcdir)/include  $(AO_CFLAGS) $(GTKMM_CFLAGS) $(GCONFMM_CFLAGS) $(GTHREAD_CFLAGS)
