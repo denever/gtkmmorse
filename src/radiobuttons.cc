@@ -16,7 +16,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "radiobuttons.h"
+#include "radiobuttons.hh"
+
+using namespace gtkmmorsegui;
 
 RadioButtons::RadioButtons() :
   m_rbt_firstpattern("@"),
