@@ -25,68 +25,31 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef RHYTHMEXCBOX_HH
-#define RHYTHMEXCBOX_HH
+#ifndef WOCHECKBUTTON_HH
+#define WOCHECKBUTTON_HH
 
-#include "astream.hh"
-#include "wocheckbutton.hh"
-
-#include <gtkmm/scale.h>
-#include <gtkmm/label.h>
-#include <gtkmm/frame.h>
-#include <gtkmm/table.h>
-#include <gtkmm/button.h>
-#include <gtkmm/combobox.h>
-#include <gtkmm/buttonbox.h>
-#include <gtkmm/liststore.h>
-#include <gtkmm/adjustment.h>
-
-#include <gconfmm.h>
-
-#include <string>
-#include <list>
+#include <gtkmm/checkbutton.h>
 
 namespace gtkmmorsegui
 {
-    class RhythmExcBox : public Gtk::VBox
+    class WOCheckButton : public Gtk::CheckButton
     {
     public:
-	RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client>);
-	~RhythmExcBox();
-
-	sigc::signal<void, unsigned int>& signal_exercise_started();
-	sigc::signal<void, std::list<std::string> >& signal_exercise_finished();
+	WOCheckButton()
+	{}
 	
+	~WOCheckButton()
+	{}
+
     private:
-	Glib::RefPtr<Gnome::Conf::Client> m_conf_client;	
+	void on_toggled()
+	{
+	    set_sensitive(false);
 
-	libaudiostream::oastream* m_audioout;
-	
-	std::list< std::string > m_exercise_strings;
-
-	Gtk::Frame m_frm_msg;
-	Gtk::Frame m_frm_checkboard;	
-	Gtk::Label m_lbl_msg;
-	
-	Gtk::HButtonBox m_hbb_buttons;
-	
-	Gtk::Button m_btn_start;
-	Gtk::Button m_btn_stop;
-
-	Gtk::HBox m_box_check;
-	
-	Gtk::Table m_tbl_check1;
-	Gtk::Table m_tbl_check2;
-	Gtk::Table m_tbl_check3;
-
-	gtkmmorsegui::WOCheckButton m_txt_check[3][4][5];	
-	
-	sigc::signal<void, unsigned int> m_started;
-	sigc::signal<void, std::list<std::string> > m_finished;
-
-	void on_btn_start_clicked();
-	void on_play_finished();
+	    return Gtk::CheckButton::on_toggled();
+	}
     };
 }
 
 #endif
+

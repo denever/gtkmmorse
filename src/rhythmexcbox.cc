@@ -33,10 +33,9 @@ using namespace gtkmmorsegui;
 
 RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_conf_client(conf_client),
-    m_frm_msg("Rhythm exercise"),
+    m_frm_msg("Exercise explanation"),
+    m_frm_checkboard("Check board"),    
     m_lbl_msg(rhythmexc_explanation),
-    m_btn_repeat("repeat"),
-    m_btn_next("next"),
     m_btn_start("start"),
     m_btn_stop("stop"),
     m_tbl_check1(4,5),
@@ -49,13 +48,10 @@ RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 
     pack_start(m_frm_msg);
     
-    m_btn_repeat.set_sensitive(false);
-    m_btn_next.set_sensitive(false);    
     m_btn_start.set_sensitive(true);
     m_btn_stop.set_sensitive(false);
+    m_frm_checkboard.set_sensitive(false);    
 
-    m_hbb_buttons.add(m_btn_repeat);
-    m_hbb_buttons.add(m_btn_next);    
     m_hbb_buttons.add(m_btn_stop);
     m_hbb_buttons.add(m_btn_start);
     
@@ -79,7 +75,9 @@ RhythmExcBox::RhythmExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_box_check.pack_start(m_tbl_check2);
     m_box_check.pack_start(m_tbl_check3);
     
-    pack_start(m_box_check);
+    m_frm_checkboard.add(m_box_check);
+
+    pack_start(m_frm_checkboard, Gtk::PACK_SHRINK);
 }
 
 RhythmExcBox::~RhythmExcBox()
@@ -98,6 +96,8 @@ sigc::signal<void, std::list<std::string> >& RhythmExcBox::signal_exercise_finis
 void RhythmExcBox::on_btn_start_clicked()
 {
     m_btn_start.set_sensitive(false);
+    m_btn_stop.set_sensitive(true);
+    m_frm_checkboard.set_sensitive(true);
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
     unsigned int keyspeed = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed");
@@ -130,5 +130,7 @@ void RhythmExcBox::on_play_finished()
 {
     delete m_audioout;
     m_btn_start.set_sensitive(true);
+    m_btn_stop.set_sensitive(false);    
+    m_frm_checkboard.set_sensitive(false);
     m_finished.emit(m_exercise_strings);    
 }
