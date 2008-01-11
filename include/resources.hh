@@ -84,6 +84,13 @@
 #define dlg_charset2_choice9  "Chars mixed without group order "
 #define dlg_charset2_choice10 "End"
 
+#define group_chars1 "eishtmo"
+#define group_chars2 "eishtmoawjuv"
+#define group_chars3 "eishtmoawjuvndbg"
+#define group_chars4 "eishtmoawjuvndbgrplf"
+#define group_chars5 "eishtmoawjuvndbgrplfkcyqzx"
+#define group_numbrs "0123456789"
+
 #define dlg_koch_title    "Do you want to continue with the Koch method?"
 #define dlg_koch_msg_start "Ready for start a Koch exercise"
 #define dlg_koch_msg_success "Your overall success rate is %1. If you want you can go to the next level of koch exercise."
