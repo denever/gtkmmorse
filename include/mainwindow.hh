@@ -52,7 +52,7 @@ namespace gtkmmorsegui
     private:
 	Gtk::Button m_btn_quit;
 	
-	Gtk::HBox m_box_main;
+//	Gtk::HBox m_box_main;
 	Gtk::VBox m_box_left;
 	Gtk::VBox m_box_right;	
 

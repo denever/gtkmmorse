@@ -41,10 +41,10 @@ MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     set_title(mainwindow_title);
     set_border_width(10);
     set_default_size(800, 300);
-    add(m_box_main);
+    add(m_box_right);
 
-    m_box_main.pack_start(m_box_left);
-    m_box_main.pack_start(m_box_right);
+//    m_box_main.pack_start(m_box_left);
+//    m_box_main.pack_start(
 
     m_box_right.pack_start(m_nbkmain);
     m_box_right.pack_start(m_btn_quit, Gtk::PACK_SHRINK);
