@@ -129,8 +129,8 @@ void BlockBox::on_btn_play_clicked()
     unsigned int pitch = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch");
     unsigned int keyspeed = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed");
     unsigned int charpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/charpause");
-    unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/strpause");
-
+    unsigned int strpause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/stringpause");
+    
     unsigned int strnum = (unsigned int) m_hsl_stringnum.get_value();
     unsigned int strlen = (unsigned int) m_hsl_stringlength.get_value();
 
@@ -148,7 +148,7 @@ void BlockBox::on_btn_play_clicked()
     
     m_audioout->enqueue_pause(begin_pause*1000);
     
-    current_keyer<<blocks_exc;
+    current_keyer << blocks_exc;
     
     m_audioout->play();
 
