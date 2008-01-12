@@ -44,21 +44,15 @@ MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 
     m_box_right.pack_start(m_nbkmain);
     m_box_right.pack_start(m_btn_quit, Gtk::PACK_SHRINK);
-
-    m_box_mainblock.pack_start(m_box_check);
-    m_box_mainblock.pack_start(m_box_block);    
     
     m_nbkmain.append_page(m_box_rhythm, mainwindow_item1);    
     m_nbkmain.append_page(m_box_pattern, mainwindow_item2);
     m_nbkmain.append_page(m_box_setup, mainwindow_item4);    
-    m_nbkmain.append_page(m_box_mainblock, mainwindow_item6);
+    m_nbkmain.append_page(m_box_block, mainwindow_item6);
     
     show_all_children();
     
     m_btn_quit.signal_clicked().connect( sigc::mem_fun(*this, &MainWindow::on_btn_quit_clicked) );
-
-    m_box_block.signal_exercise_started().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_started) );
-    m_box_block.signal_exercise_finished().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_finished) );    
 }
 
 MainWindow::~MainWindow()

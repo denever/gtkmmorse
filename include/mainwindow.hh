@@ -56,8 +56,6 @@ namespace gtkmmorsegui
 	Gtk::VBox m_box_left;
 	Gtk::VBox m_box_right;	
 
-	Gtk::HBox m_box_mainblock;
-
 	Gtk::Notebook m_nbkmain;
 
 	gtkmmorsegui::RhythmExcBox m_box_rhythm;
