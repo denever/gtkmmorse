@@ -59,7 +59,7 @@ SetupBox::SetupBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     Gtk::Adjustment adj_beginpause(m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause"), 1.0, 6.0);
     Gtk::Adjustment adj_keyspeed(m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed"), 10.0, 70.0);
     Gtk::Adjustment adj_charpause(m_conf_client->get_float("/apps/gtkmmorse/keyer/charpause"), 1.0, 5.0);
-    Gtk::Adjustment adj_stringpause(m_conf_client->get_float("/apps/gtkmmorse/keyer/stringpause"), 1.0, 10.0);
+    Gtk::Adjustment adj_stringpause(m_conf_client->get_float("/apps/gtkmmorse/keyer/stringpause"), 6.0, 20.0);
     Gtk::Adjustment adj_pitch(m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch"), 500.0, 1000.0, 50.0);
     Gtk::Adjustment adj_linelen(m_conf_client->get_float("/apps/gtkmmorse/keyer/linelen"), 3.0, 7.0);
     
