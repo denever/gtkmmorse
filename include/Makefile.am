@@ -10,4 +10,4 @@
 
 noinst_HEADERS = astream.hh blocks.hh mainwindow.hh random.hh setupbox.hh\
 	audioexcep.hh blockbox.hh keyer.hh resources.hh keycheckentry.hh\
-	rhythmexcbox.hh wocheckbutton.hh patternexcbox.hh radiobuttons.hh
+	rhythmexcbox.hh wocheckbutton.hh patternexcbox.hh radiobuttons.hh checkbox.hh
