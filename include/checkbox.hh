@@ -87,13 +87,15 @@ namespace gtkmmorsegui
 	CheckBox();
 	~CheckBox();
 
-	void on_exercise_started(unsigned int);
+	void on_exercise_started(unsigned int, unsigned int, std::string);
 	void on_exercise_finished(std::list<std::string>);
 	void on_txt_copied_return_pressed();
 
     private:
 	unsigned short m_cols_count;
 	unsigned int m_strings_lasted;
+	unsigned int m_total_chars;
+	std::string m_charset;
 	
 	KeyCheckEntry m_txt_copied;	
 

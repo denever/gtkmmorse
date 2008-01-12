@@ -119,9 +119,11 @@ void CheckBox::on_txt_copied_return_pressed()
     m_txt_copied.set_text("");
 }
 
-void CheckBox::on_exercise_started(unsigned int num_strings)
+void CheckBox::on_exercise_started(unsigned int num_strings, unsigned int num_chars, std::string charset)
 {
     m_strings_lasted = num_strings;
+    m_total_chars = num_strings*num_chars;
+    m_charset = charset;
     m_txt_copied.set_sensitive(true);
     m_txt_copied.grab_focus();
     m_ref_string->clear();
@@ -148,13 +150,12 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
 	int wl = count_wrong_letters(row[m_mod_string.m_col_keyed], row[m_mod_string.m_col_copied]);
 	double percentage = double(wl) / double(cit->size());
 	wrong_letters += wl;
-	total_letters += cit->size();
 	
 	row[m_mod_string.m_col_percentage] = 100 - int(100*percentage);
 	cit++;
     }
 
-    double fraction = 1 - double(wrong_letters)/double(total_letters);    
+    double fraction = 1 - double(wrong_letters)/double(m_total_chars);    
     double overall_percentage = 100*fraction;
 
     m_prb_overall.set_fraction(fraction);

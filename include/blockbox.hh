@@ -56,7 +56,7 @@ namespace gtkmmorsegui
 	BlockBox(Glib::RefPtr<Gnome::Conf::Client>);
 	~BlockBox();
 
-	sigc::signal<void, unsigned int>& signal_exercise_started();
+	sigc::signal<void, unsigned int, unsigned int, std::string>& signal_exercise_started();
 	sigc::signal<void, std::list<std::string> >& signal_exercise_finished();
 	
     private:
@@ -104,7 +104,7 @@ namespace gtkmmorsegui
 	Gtk::Adjustment m_adj_stringlength;
 	Gtk::Adjustment m_adj_stringnum;
 	
-	sigc::signal<void, unsigned int> m_started;
+	sigc::signal<void, unsigned int, unsigned int, std::string> m_started;
 	sigc::signal<void, std::list<std::string> > m_finished;
 	
 	void on_btn_play_clicked();

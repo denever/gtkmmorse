@@ -96,7 +96,7 @@ BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 BlockBox::~BlockBox()
 {}
 
-sigc::signal<void, unsigned int>& BlockBox::signal_exercise_started()
+sigc::signal<void, unsigned int, unsigned int, std::string>& BlockBox::signal_exercise_started()
 {
     return m_started;
 }
@@ -134,7 +134,7 @@ void BlockBox::on_btn_play_clicked()
     unsigned int strnum = (unsigned int) m_hsl_stringnum.get_value();
     unsigned int strlen = (unsigned int) m_hsl_stringlength.get_value();
 
-    m_started.emit(strnum);
+    m_started.emit(strnum, strlen, m_charset);
 
     m_audioout = new libaudiostream::oastream();
 
