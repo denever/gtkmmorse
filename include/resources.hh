@@ -53,7 +53,7 @@
 #define mainwindow_item3  "Main Exercise"
 #define mainwindow_item4  "Setup"
 #define mainwindow_item5  "Koch Setup"
-#define mainwindow_item6  "Blocks method"
+#define mainwindow_item6  "Classic method"
 
 #define msg_start      "About to start keying. Get ready..."
 #define msg_changes    "Change these settings from the Setup Menu."
