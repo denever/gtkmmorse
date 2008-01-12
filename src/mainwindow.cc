@@ -47,8 +47,8 @@ MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_nbkmain.append_page(m_box_rhythm, mainwindow_item1);    
     m_nbkmain.append_page(m_box_pattern, mainwindow_item2);
-    m_nbkmain.append_page(m_box_setup, mainwindow_item4);    
     m_nbkmain.append_page(m_box_block, mainwindow_item6);
+    m_nbkmain.append_page(m_box_setup, mainwindow_item4);    
     
     show_all_children();
     
