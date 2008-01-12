@@ -84,7 +84,8 @@ CheckBox::CheckBox():
     m_ali_smbrate.set_padding(0,5,8,8);
     m_ali_smbrate.add(m_scl_symbol);
     m_frm_smbrate.add(m_ali_smbrate);    
-    pack_start(m_frm_smbrate);
+
+//    pack_start(m_frm_smbrate);
 
     m_ali_overall.set_padding(20,20,10,10);
     m_ali_overall.add(m_prb_overall);
@@ -97,7 +98,6 @@ CheckBox::CheckBox():
     pack_start(m_txt_copied, Gtk::PACK_SHRINK);
 
     m_txt_copied.signal_return_pressed().connect( sigc::mem_fun(*this, &CheckBox::on_txt_copied_return_pressed) );
-//    m_btn_check.signal_clicked().connect( sigc::mem_fun(*this, &CheckBox::on_btn_check_clicked) );
 }
 
 CheckBox::~CheckBox()
@@ -135,26 +135,32 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
 
     typedef Gtk::TreeModel::Children type_children; //minimise code length.
     type_children children = m_ref_string->children();
+
+
+    unsigned int wrong_letters = 0;
+    unsigned int total_letters = 0;
     for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
     {
 	Gtk::TreeModel::Row row = *iter;
 	Glib::ustring temp = row[m_mod_string.m_col_copied];
 	row[m_mod_string.m_col_keyed] = *cit;
-	double percentage = double(count_wrong_letters(row[m_mod_string.m_col_keyed], row[m_mod_string.m_col_copied])) / double(cit->size());
+
+	int wl = count_wrong_letters(row[m_mod_string.m_col_keyed], row[m_mod_string.m_col_copied]);
+	double percentage = double(wl) / double(cit->size());
+	wrong_letters += wl;
+	total_letters += cit->size();
+	
 	row[m_mod_string.m_col_percentage] = 100 - int(100*percentage);
 	cit++;
     }
-}
 
-/*
-  void CheckBox::append_result(Glib::ustring keyed, Glib::ustring copied, unsigned int percentage)
-{
-  Gtk::TreeModel::Row row = *(m_ref_string->append());
-  row[m_mod_string.m_col_keyed] = keyed;
-  row[m_mod_string.m_col_copied] = copied;
-  row[m_mod_string.m_col_percentage] = percentage;
+    double fraction = 1 - double(wrong_letters)/double(total_letters);    
+    double overall_percentage = 100*fraction;
+
+    m_prb_overall.set_fraction(fraction);
+    Glib::ustring text = Glib::Ascii::dtostr(overall_percentage) + "%";
+    m_prb_overall.set_text(text);
 }
-*/
 
 void CheckBox::prepare_scl_string()
 {
