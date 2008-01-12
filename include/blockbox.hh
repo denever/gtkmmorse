@@ -29,6 +29,7 @@
 #define BLOCKBOX_HH
 
 #include "astream.hh"
+#include "checkbox.hh"
 
 #include <gtkmm/box.h>
 #include <gtkmm/frame.h>
@@ -49,7 +50,7 @@
 
 namespace gtkmmorsegui
 {
-    class BlockBox : public Gtk::VBox
+    class BlockBox : public Gtk::HBox
     {
     public:
 	BlockBox(Glib::RefPtr<Gnome::Conf::Client>);
@@ -81,6 +82,10 @@ namespace gtkmmorsegui
 	
 	std::list< std::string > m_exercise_strings;
 
+	Gtk::VBox m_box_main;
+	
+	gtkmmorsegui::CheckBox m_box_check;
+	
 	Gtk::Frame m_frm_stringlength;
 	Gtk::Frame m_frm_stringnum;
 	Gtk::Frame m_frm_charset;

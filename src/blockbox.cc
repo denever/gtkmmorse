@@ -78,13 +78,19 @@ BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_hbb_buttons.pack_start(m_btn_play);
     
-    pack_start(m_frm_stringlength);    
-    pack_start(m_frm_stringnum);
-    pack_start(m_frm_charset);
-    pack_start(m_hbb_buttons);
+    m_box_main.pack_start(m_frm_stringlength);    
+    m_box_main.pack_start(m_frm_stringnum);
+    m_box_main.pack_start(m_frm_charset);
+    m_box_main.pack_start(m_hbb_buttons);
+
+    pack_start(m_box_main);
+    pack_start(m_box_check);
     
     m_btn_play.signal_clicked().connect( sigc::mem_fun(*this, &BlockBox::on_btn_play_clicked) );
     m_cmb_charset.signal_changed().connect( sigc::mem_fun(*this, &BlockBox::on_cmb_charset_changed) );
+    
+    signal_exercise_started().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_started) );
+    signal_exercise_finished().connect( sigc::mem_fun(m_box_check, &CheckBox::on_exercise_finished) );    
 }
 
 BlockBox::~BlockBox()
