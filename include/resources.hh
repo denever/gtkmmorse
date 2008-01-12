@@ -89,7 +89,7 @@
 #define group_chars3 "eishtmoawjuvndbg"
 #define group_chars4 "eishtmoawjuvndbgrplf"
 #define group_chars5 "eishtmoawjuvndbgrplfkcyqzx"
-#define group_numbrs "0123456789"
+#define group_numbrs "eishtmoawjuvndbgrplfkcyqzx0123456789"
 
 #define dlg_koch_title    "Do you want to continue with the Koch method?"
 #define dlg_koch_msg_start "Ready for start a Koch exercise"
