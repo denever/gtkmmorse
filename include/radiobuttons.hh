@@ -30,7 +30,7 @@
 
 #include <gtkmm/box.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/radiobutton.h>
+#include <gtkmm/checkbutton.h>
 
 namespace gtkmmorsegui
 {
@@ -38,11 +38,22 @@ namespace gtkmmorsegui
     {
     public:
 	RadioButtons();
-	virtual ~RadioButtons();
+	~RadioButtons();
 
+	void set_tooltips(Glib::ustring, Glib::ustring);
+	
+	void on_ckb_choice1();
+	void on_ckb_choice2();
+
+	inline unsigned int choice()
+	{
+	    return m_choice;
+	}
+	
     private:
-	Gtk::RadioButton m_rbt_firstpattern;
-	Gtk::RadioButton m_rbt_seconpattern;    
+	unsigned int m_choice;
+	Gtk::CheckButton m_ckb_choice1;
+	Gtk::CheckButton m_ckb_choice2;
     };
 }
 #endif //RADIOBUTTONS_HH

@@ -21,16 +21,33 @@
 using namespace gtkmmorsegui;
 
 RadioButtons::RadioButtons() :
-  m_rbt_firstpattern("@"),
-  m_rbt_seconpattern("#")
+    m_choice(0)
 {
-  Gtk::RadioButton::Group group = m_rbt_firstpattern.get_group();
-  m_rbt_seconpattern.set_group(group);
-
-  pack_start(m_rbt_firstpattern);
-  pack_start(m_rbt_seconpattern);  
+    pack_start(m_ckb_choice1, Gtk::PACK_SHRINK);
+    pack_start(m_ckb_choice2, Gtk::PACK_SHRINK);
+    m_ckb_choice1.signal_clicked().connect( sigc::mem_fun(*this, &RadioButtons::on_ckb_choice1) );
+    m_ckb_choice2.signal_clicked().connect( sigc::mem_fun(*this, &RadioButtons::on_ckb_choice2) );
 }
 
 RadioButtons::~RadioButtons()
 {
 }
+
+void RadioButtons::set_tooltips(Glib::ustring choice1, Glib::ustring choice2)
+{
+    m_ckb_choice1.set_tooltip_text(choice1);
+    m_ckb_choice2.set_tooltip_text(choice2);    
+}
+
+void RadioButtons::on_ckb_choice1()
+{
+    m_choice = 1;
+    set_sensitive(false);
+}
+
+void RadioButtons::on_ckb_choice2()
+{
+    m_choice = 2;
+    set_sensitive(false);    
+}
+
