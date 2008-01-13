@@ -29,8 +29,6 @@
 #include "patternexcbox.hh"
 #include "resources.hh"
 
-#include <iostream>
-
 using namespace gtkmmorsegui;
 
 PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
