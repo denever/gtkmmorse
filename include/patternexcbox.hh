@@ -65,7 +65,10 @@ namespace gtkmmorsegui
 
 	Gtk::Frame m_frm_msg;
 	Gtk::Frame m_frm_checkboard;	
+
 	Gtk::Label m_lbl_msg;
+	Gtk::Label m_lbl_firstpattern;
+	Gtk::Label m_lbl_seconpattern;
 	
 	Gtk::HButtonBox m_hbb_buttons;
 	
@@ -74,11 +77,15 @@ namespace gtkmmorsegui
 	Gtk::Button m_btn_start;
 
 	Gtk::HBox m_box_check;
+	Gtk::VBox m_box_lbls;	
 	
 	Gtk::Table m_tbl_check1;
 	Gtk::Table m_tbl_check2;
 	Gtk::Table m_tbl_check3;
+	Gtk::Table m_tbl_lbls;
 
+//	Gtk::ProgressBar m_prb_overall;	
+	
 	gtkmmorsegui::RadioButtons m_rbt_check[3][4][5];	
 	
 	sigc::signal<void, unsigned int> m_started;
@@ -91,7 +98,6 @@ namespace gtkmmorsegui
 	void on_play_finished();
 	void on_firstpattern_finished();
 	void on_seconpattern_finished();	    
-
     };
 }
 

@@ -29,6 +29,8 @@
 #include "patternexcbox.hh"
 #include "resources.hh"
 
+#include <iostream>
+
 using namespace gtkmmorsegui;
 
 PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
@@ -36,12 +38,15 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_frm_msg("Exercise explanation"),
     m_frm_checkboard("Check board"),    
     m_lbl_msg(patternexc_explanation),
-    m_btn_firstpattern("Listen first pattern @"),
-    m_btn_seconpattern("Listen second pattern #"),    
+    m_lbl_firstpattern("First pattern"),
+    m_lbl_seconpattern("Second pattern"),    
+    m_btn_firstpattern("Listen first pattern"),
+    m_btn_seconpattern("Listen second pattern"),    
     m_btn_start("Start"),
     m_tbl_check1(4,5),
     m_tbl_check2(4,5),
-    m_tbl_check3(4,5)   
+    m_tbl_check3(4,5),
+    m_tbl_lbls(4,1)
 {
     m_frm_msg.add(m_lbl_msg);
 
@@ -51,7 +56,7 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_btn_start.set_sensitive(true);
     m_frm_checkboard.set_sensitive(false);    
-
+    
     m_hbb_buttons.add(m_btn_firstpattern);
     m_hbb_buttons.add(m_btn_seconpattern);
     m_hbb_buttons.add(m_btn_start);
@@ -62,6 +67,17 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_btn_seconpattern.signal_clicked().connect( sigc::mem_fun(*this, &PatternExcBox::on_btn_seconpattern_clicked) );
     
     m_btn_start.signal_clicked().connect( sigc::mem_fun(*this, &PatternExcBox::on_btn_start_clicked) );
+
+    m_box_lbls.pack_start(m_lbl_firstpattern, Gtk::PACK_SHRINK);
+    m_box_lbls.pack_start(m_lbl_seconpattern, Gtk::PACK_SHRINK);
+    
+    m_tbl_lbls.attach(m_box_lbls, 0, 1, 0, 1);
+
+    for(unsigned int a = 0; a < 3; a++)
+	for(unsigned int i = 0; i < 4; i++)
+	    for(unsigned int j = 0; j < 5; j++)
+		m_rbt_check[a][i][j].set_tooltips("First pattern", "Second pattern");
+
 
     for(unsigned int i = 0; i < 4; i++)
 	for(unsigned int j = 0; j < 5; j++)
@@ -83,10 +99,11 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_tbl_check2.set_col_spacings(10);
     m_tbl_check3.set_col_spacings(10);    
 
+    m_box_check.pack_start(m_tbl_lbls);    
     m_box_check.pack_start(m_tbl_check1);
     m_box_check.pack_start(m_tbl_check2);
     m_box_check.pack_start(m_tbl_check3);
-    
+
     m_frm_checkboard.add(m_box_check);
 
     pack_start(m_frm_checkboard, Gtk::PACK_SHRINK);
@@ -167,7 +184,7 @@ void PatternExcBox::on_btn_start_clicked()
     m_frm_checkboard.set_sensitive(true);
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
-    unsigned int keyspeed = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/keyspeed");
+    unsigned int keyspeed = 12;
     unsigned int charpause = 3;
     unsigned int strpause = 12;
     unsigned int strnum = 12;
@@ -199,6 +216,7 @@ void PatternExcBox::on_play_finished()
     m_btn_start.set_sensitive(true);
     m_btn_firstpattern.set_sensitive(true);
     m_btn_seconpattern.set_sensitive(true);    
+    m_frm_checkboard.set_sensitive(false);
     m_finished.emit(m_exercise_strings);    
 }
 
