@@ -33,6 +33,24 @@
 using namespace gtkmmorsegui;
 
 /*
+ * Returns a string truncated or padded to a given length. The padding is to
+ * the right and the padding character is 'MISSED_MARKER'.
+ */
+Glib::ustring padding(unsigned int len, const Glib::ustring& b)
+{
+    int s = len - b.size();	
+
+    if(s > 0)
+	return b + Glib::ustring(s,MISSED_MARKER);
+
+    if(s < 0)
+	return Glib::ustring(b, 0, len);
+
+    return b;
+}
+
+
+/*
  * This function compares two strings and returns lets the user input the copied sign groups
  */
 unsigned int count_wrong_letters(Glib::ustring keyed, Glib::ustring copied)
@@ -92,10 +110,10 @@ CheckBox::CheckBox():
     m_ali_overall.set_padding(20,20,10,10);
     m_ali_overall.add(m_prb_overall);
     m_frm_overall.add(m_ali_overall);    
-    pack_start(m_frm_overall);
+    pack_start(m_frm_overall, Gtk::PACK_SHRINK);
     
     m_frm_legend.add(m_lbl_legend);
-    pack_start(m_frm_legend);
+    pack_start(m_frm_legend, Gtk::PACK_SHRINK);
 
     pack_start(m_txt_copied, Gtk::PACK_SHRINK);
 
@@ -108,7 +126,7 @@ CheckBox::~CheckBox()
 void CheckBox::append_copied(Glib::ustring copied)
 {
   Gtk::TreeModel::Row row = *(m_ref_string->append());
-  row[m_mod_string.m_col_copied] = copied;
+  row[m_mod_string.m_col_copied] = padding(m_group_size, copied);
 }
 
 void CheckBox::append_symbol(char symbol, unsigned int percentage)
@@ -133,11 +151,14 @@ void CheckBox::on_exercise_started(unsigned int num_strings, unsigned int num_ch
 {
     m_strings_lasted = num_strings;
     m_total_chars = num_strings*num_chars;
+    m_group_size = num_chars;
     m_charset = charset;
     m_txt_copied.set_sensitive(true);
     m_txt_copied.grab_focus();
     m_ref_string->clear();
     m_ref_symbol->clear();
+    m_prb_overall.set_fraction(0);
+    m_prb_overall.set_text("");
 }
 
 void CheckBox::on_exercise_finished(std::list<std::string> lst)
@@ -150,7 +171,7 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
     type_children children = m_ref_string->children();
 
     unsigned int wrong_letters = 0;
-    unsigned int total_letters = 0;
+
     for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
     {
 	Gtk::TreeModel::Row row = *iter;

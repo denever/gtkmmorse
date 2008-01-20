@@ -95,6 +95,7 @@ namespace gtkmmorsegui
 	unsigned short m_cols_count;
 	unsigned int m_strings_lasted;
 	unsigned int m_total_chars;
+	unsigned int m_group_size;	
 	std::string m_charset;
 	
 	KeyCheckEntry m_txt_copied;	
