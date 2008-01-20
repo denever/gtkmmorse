@@ -48,7 +48,7 @@ BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_ref_charset = Gtk::ListStore::create(m_mod_col);
     m_cmb_charset.set_model(m_ref_charset);
-    m_cmb_charset.pack_start(m_mod_col.m_col_name); 
+    m_cmb_charset.pack_start(m_mod_col.m_col_name);
 
     m_hsl_stringlength.set_adjustment(m_adj_stringlength);
     m_hsl_stringnum.set_adjustment(m_adj_stringnum);
@@ -72,15 +72,15 @@ BlockBox::BlockBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     append_charset(4, dlg_charset_choice5);
     append_charset(5, dlg_charset_choice6);
 
-    m_ali_charset.set_padding(70,70,70,70);
+    m_ali_charset.set_padding(30,30,30,30);
     m_ali_charset.add(m_cmb_charset);
     m_frm_charset.add(m_ali_charset);
     
     m_hbb_buttons.pack_start(m_btn_play);
     
-    m_box_main.pack_start(m_frm_stringlength);    
-    m_box_main.pack_start(m_frm_stringnum);
-    m_box_main.pack_start(m_frm_charset);
+    m_box_main.pack_start(m_frm_stringlength, Gtk::PACK_SHRINK);
+    m_box_main.pack_start(m_frm_stringnum, Gtk::PACK_SHRINK);
+    m_box_main.pack_start(m_frm_charset, Gtk::PACK_SHRINK);
     m_box_main.pack_start(m_hbb_buttons);
 
     pack_start(m_box_main);
