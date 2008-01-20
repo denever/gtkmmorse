@@ -300,33 +300,3 @@ void CheckBox::prepare_scl_symbol()
 #endif
     }
 }
-
-/*
-void display_symbol_rate(const list<string>& lks, const list<string>& lcs)
-{
-    map<char, unsigned int> keyed_all;
-    map<char, unsigned int> keyed_bad;
-    map<char, unsigned int> keyed_missed;
-    map<char, unsigned int> copied_all;
-    map<char, unsigned int> copied_good;
-    map<char, unsigned int> copied_bad;
-
-    // compute results
-
-    // iterate over the lists of strings
-    c_lststr lks_it;
-    c_lststr lcs_it;
-
-    for(lks_it = lks.begin(), lcs_it = lcs.begin();
-        lks_it != lks.end() && lcs_it != lcs.end();
-        ++lks_it, ++lcs_it
-       )
-    {
-	// ensure that the copied string is as long as the keyed string,
-	// padding it with 'MISSED_MARKER' if necessary
-	string copied = padding((*lks_it).size(), *lcs_it);
-
-	// iterate over the characters in each group
-    }
-}
-*/
