@@ -28,6 +28,8 @@
 #include "checkbox.hh"
 #include "resources.hh"
 
+#include <map>
+
 using namespace gtkmmorsegui;
 
 /*
@@ -85,7 +87,7 @@ CheckBox::CheckBox():
     m_ali_smbrate.add(m_scl_symbol);
     m_frm_smbrate.add(m_ali_smbrate);    
 
-//    pack_start(m_frm_smbrate);
+    pack_start(m_frm_smbrate);
 
     m_ali_overall.set_padding(20,20,10,10);
     m_ali_overall.add(m_prb_overall);
@@ -109,6 +111,14 @@ void CheckBox::append_copied(Glib::ustring copied)
   row[m_mod_string.m_col_copied] = copied;
 }
 
+void CheckBox::append_symbol(char symbol, unsigned int percentage)
+{
+  Gtk::TreeModel::Row row = *(m_ref_symbol->append());
+  row[m_mod_symbol.m_col_symbol] = Glib::ustring(1, symbol);
+  row[m_mod_symbol.m_col_percentage] = percentage;
+}
+
+
 void CheckBox::on_txt_copied_return_pressed()
 {
     if(m_strings_lasted > 0)
@@ -127,6 +137,7 @@ void CheckBox::on_exercise_started(unsigned int num_strings, unsigned int num_ch
     m_txt_copied.set_sensitive(true);
     m_txt_copied.grab_focus();
     m_ref_string->clear();
+    m_ref_symbol->clear();
 }
 
 void CheckBox::on_exercise_finished(std::list<std::string> lst)
@@ -137,7 +148,6 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
 
     typedef Gtk::TreeModel::Children type_children; //minimise code length.
     type_children children = m_ref_string->children();
-
 
     unsigned int wrong_letters = 0;
     unsigned int total_letters = 0;
@@ -161,6 +171,61 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
     m_prb_overall.set_fraction(fraction);
     Glib::ustring text = Glib::Ascii::dtostr(overall_percentage) + "%";
     m_prb_overall.set_text(text);
+
+    std::map<char, unsigned int> keyed_all;
+    std::map<char, unsigned int> keyed_bad;
+    std::map<char, unsigned int> keyed_missed;
+    std::map<char, unsigned int> copied_all;
+    std::map<char, unsigned int> copied_good;
+    std::map<char, unsigned int> copied_bad;
+
+    
+    for(type_children::iterator iter = children.begin(); iter != children.end(); ++iter)
+    {
+	Gtk::TreeModel::Row row = *iter;
+	Glib::ustring copied = row[m_mod_string.m_col_copied];
+	Glib::ustring keyed =  row[m_mod_string.m_col_keyed];
+
+	Glib::ustring::const_iterator cit = copied.begin();
+	Glib::ustring::const_iterator kit = keyed.begin();
+	Glib::ustring::const_iterator kitend = keyed.end();
+	
+	for(; kit != kitend; ++kit, ++cit )
+	{
+	    char kc = *kit;  // keyed symbol
+	    char cc = *cit;  // copied sybmol
+
+	    keyed_all[kc]++;   // mark keyed symbol
+	    copied_all[cc]++;  // mark copied symbol
+
+	    if(kc == cc)
+	    {
+		// keyed symbol was copied correctly
+		copied_good[cc]++;
+	    }
+	    else if(cc != MISSED_MARKER)
+	    {
+		// keyed symbol was copied incorrectly
+		keyed_bad[kc]++;
+		copied_bad[cc]++;
+	    }
+	    else
+	    {
+		// keyed symbol was missed
+		keyed_missed[kc]++;
+	    }
+	}
+    }
+
+    typedef std::map<char, unsigned int>::const_iterator c_map;
+    
+    for(c_map mtc = keyed_all.begin(); mtc != keyed_all.end(); ++mtc)
+    {
+	char c = (*mtc).first;
+	
+	if (keyed_all[c] != 0)
+	    append_symbol(c,int(100*copied_good[c]/keyed_all[c]));
+    }
 }
 
 void CheckBox::prepare_scl_string()
@@ -214,3 +279,33 @@ void CheckBox::prepare_scl_symbol()
 #endif
     }
 }
+
+/*
+void display_symbol_rate(const list<string>& lks, const list<string>& lcs)
+{
+    map<char, unsigned int> keyed_all;
+    map<char, unsigned int> keyed_bad;
+    map<char, unsigned int> keyed_missed;
+    map<char, unsigned int> copied_all;
+    map<char, unsigned int> copied_good;
+    map<char, unsigned int> copied_bad;
+
+    // compute results
+
+    // iterate over the lists of strings
+    c_lststr lks_it;
+    c_lststr lcs_it;
+
+    for(lks_it = lks.begin(), lcs_it = lcs.begin();
+        lks_it != lks.end() && lcs_it != lcs.end();
+        ++lks_it, ++lcs_it
+       )
+    {
+	// ensure that the copied string is as long as the keyed string,
+	// padding it with 'MISSED_MARKER' if necessary
+	string copied = padding((*lks_it).size(), *lcs_it);
+
+	// iterate over the characters in each group
+    }
+}
+*/

@@ -123,7 +123,8 @@ namespace gtkmmorsegui
 	ModelStringColumns m_mod_string;
 	ModelSymbolColumns m_mod_symbol;	
 
-	void append_copied(Glib::ustring copied);
+	void append_copied(Glib::ustring);
+	void append_symbol(char, unsigned int);	
 
 	void prepare_scl_string();
 	void prepare_scl_symbol();
