@@ -73,10 +73,16 @@ namespace gtkmmorsegui
 	ModelSymbolColumns()
 	{
 	    add(m_col_symbol);
+	    add(m_col_keyed);
+	    add(m_col_copied);
+	    add(m_col_missed);	    
 	    add(m_col_percentage);
 	}
 
 	Gtk::TreeModelColumn<Glib::ustring> m_col_symbol;
+	Gtk::TreeModelColumn<int> m_col_keyed;
+	Gtk::TreeModelColumn<int> m_col_copied;
+	Gtk::TreeModelColumn<int> m_col_missed;	
 	Gtk::TreeModelColumn<int> m_col_percentage;
     };
 
@@ -127,7 +133,7 @@ namespace gtkmmorsegui
 	ModelSymbolColumns m_mod_symbol;	
 
 	void append_copied(Glib::ustring);
-	void append_symbol(char, unsigned int);	
+	void append_symbol(char, unsigned int, unsigned int, unsigned int, unsigned int);	
 
 	void prepare_scl_string();
 	void prepare_scl_symbol();

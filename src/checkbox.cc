@@ -5,7 +5,7 @@
     Copyright (C) 2007 Giuseppe "denever" Martino
     begin                : Fri 23 Mar 2007
     email                : denever@users.sourceforge.net
- ***************************************************************************/
+***************************************************************************/
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -126,15 +126,18 @@ CheckBox::~CheckBox()
 
 void CheckBox::append_copied(Glib::ustring copied)
 {
-  Gtk::TreeModel::Row row = *(m_ref_string->append());
-  row[m_mod_string.m_col_copied] = padding(m_group_size, copied);
+    Gtk::TreeModel::Row row = *(m_ref_string->append());
+    row[m_mod_string.m_col_copied] = padding(m_group_size, copied);
 }
 
-void CheckBox::append_symbol(char symbol, unsigned int percentage)
+void CheckBox::append_symbol(char symbol, unsigned int keyed, unsigned int copied, unsigned int missed, unsigned int percentage)
 {
-  Gtk::TreeModel::Row row = *(m_ref_symbol->append());
-  row[m_mod_symbol.m_col_symbol] = Glib::ustring(1, symbol);
-  row[m_mod_symbol.m_col_percentage] = percentage;
+    Gtk::TreeModel::Row row = *(m_ref_symbol->append());
+    row[m_mod_symbol.m_col_symbol] = Glib::ustring(1, symbol);
+    row[m_mod_symbol.m_col_keyed] = keyed;
+    row[m_mod_symbol.m_col_copied] = copied;
+    row[m_mod_symbol.m_col_missed] = missed;
+    row[m_mod_symbol.m_col_percentage] = percentage;
 }
 
 
@@ -246,7 +249,7 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
 	char c = (*mtc).first;
 	
 	if (keyed_all[c] != 0)
-	    append_symbol(c,int(100*copied_good[c]/keyed_all[c]));
+	    append_symbol(c,keyed_all[c], copied_good[c], keyed_missed[c], int(100*copied_good[c]/keyed_all[c]));
     }
 }
 
@@ -285,6 +288,9 @@ void CheckBox::prepare_scl_symbol()
     m_trv_symbol.set_model(m_ref_symbol);
 
     m_cols_count = m_trv_symbol.append_column(smbmsg_symbol, m_mod_symbol.m_col_symbol);
+    m_cols_count = m_trv_symbol.append_column("Keyed", m_mod_symbol.m_col_keyed);
+    m_cols_count = m_trv_symbol.append_column("Copied", m_mod_symbol.m_col_copied);
+    m_cols_count = m_trv_symbol.append_column("Missed", m_mod_symbol.m_col_missed);            
 
     symbol_cell = new Gtk::CellRendererProgress;
 
