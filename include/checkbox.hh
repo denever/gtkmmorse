@@ -100,8 +100,10 @@ namespace gtkmmorsegui
 	
 	KeyCheckEntry m_txt_copied;	
 
+	Gtk::VBox m_box_input;	
+	
 	Gtk::Frame m_frm_check;
-	Gtk::Frame m_frm_legend;
+	Gtk::Frame m_frm_input;
 	Gtk::Frame m_frm_overall;
 	Gtk::Frame m_frm_smbrate;
 	

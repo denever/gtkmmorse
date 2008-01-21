@@ -86,7 +86,7 @@ CheckBox::CheckBox():
     m_cols_count(0),
     m_strings_lasted(0),
     m_frm_check(cmpmsg_title),
-    m_frm_legend("Legend"),
+    m_frm_input("Insert copied signs"),    
     m_frm_overall(ovrmsg_title),
     m_frm_smbrate(smbmsg_title),
     m_lbl_legend(chkmsg_legend)
@@ -111,11 +111,12 @@ CheckBox::CheckBox():
     m_ali_overall.add(m_prb_overall);
     m_frm_overall.add(m_ali_overall);    
     pack_start(m_frm_overall, Gtk::PACK_SHRINK);
-    
-    m_frm_legend.add(m_lbl_legend);
-    pack_start(m_frm_legend, Gtk::PACK_SHRINK);
 
-    pack_start(m_txt_copied, Gtk::PACK_SHRINK);
+    m_box_input.pack_start(m_lbl_legend);
+    m_box_input.pack_start(m_txt_copied);
+    m_frm_input.add(m_box_input);
+    
+    pack_start(m_frm_input, Gtk::PACK_SHRINK);
 
     m_txt_copied.signal_return_pressed().connect( sigc::mem_fun(*this, &CheckBox::on_txt_copied_return_pressed) );
 }
