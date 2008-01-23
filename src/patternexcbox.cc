@@ -31,7 +31,7 @@
 
 using namespace gtkmmorsegui;
 
-const char patterns[2] = {'h', 'f'};
+const char* patterns = "hf";
 
 PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_conf_client(conf_client),
@@ -204,7 +204,7 @@ void PatternExcBox::on_btn_start_clicked()
     
     libkeyer::Keyer current_keyer(m_audioout, keyspeed, charpause, strpause, 900, 850);
 
-    libexercises::Blocks pattern_exc(strnum, "hf", 5);
+    libexercises::Blocks pattern_exc(strnum, patterns, 5);
 
     m_exercise_strings = pattern_exc.stringtok();
     
