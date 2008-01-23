@@ -31,6 +31,8 @@
 
 using namespace gtkmmorsegui;
 
+const char patterns[2] = {'h', 'f'};
+
 PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_conf_client(conf_client),
     m_frm_msg("Exercise explanation"),
@@ -99,7 +101,9 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 
     m_box_check.pack_start(m_tbl_lbls);    
     m_box_check.pack_start(m_tbl_check1);
+    m_box_check.pack_start(m_vsp_1);
     m_box_check.pack_start(m_tbl_check2);
+    m_box_check.pack_start(m_vsp_2);    
     m_box_check.pack_start(m_tbl_check3);
 
     m_frm_checkboard.add(m_box_check);
@@ -141,7 +145,7 @@ void PatternExcBox::on_btn_firstpattern_clicked()
     
     m_audioout->enqueue_pause(1000);
     
-    current_keyer << (unsigned char)'f';
+    current_keyer << (unsigned char)patterns[0];
     
     m_audioout->play();
 
@@ -169,7 +173,7 @@ void PatternExcBox::on_btn_seconpattern_clicked()
     
     m_audioout->enqueue_pause(1000);
     
-    current_keyer << (unsigned char)'h';
+    current_keyer << (unsigned char)patterns[1];
     
     m_audioout->play();
 
@@ -178,9 +182,14 @@ void PatternExcBox::on_btn_seconpattern_clicked()
 
 void PatternExcBox::on_btn_start_clicked()
 {
+    for(unsigned int a = 0; a < 3; a++)
+	for(unsigned int i = 0; i < 4; i++)
+	    for(unsigned int j = 0; j < 5; j++)
+		m_rbt_check[a][i][j].clear();
+
     m_btn_start.set_sensitive(false);
     m_frm_checkboard.set_sensitive(true);
-
+		    
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
     unsigned int keyspeed = 12;
     unsigned int charpause = 3;
@@ -216,6 +225,31 @@ void PatternExcBox::on_play_finished()
     m_btn_seconpattern.set_sensitive(true);    
     m_frm_checkboard.set_sensitive(false);
     m_finished.emit(m_exercise_strings);    
+    
+  // Check exercise
+    typedef std::list< std::string >::const_iterator c_vec;
+    typedef std::string::const_iterator c_str;
+
+    c_vec vit = m_exercise_strings.begin(); 
+    
+    for(unsigned int a = 0; a < 3; a++)
+	for(unsigned int i = 0; i < 4; i++)
+	{
+	    c_str sit = (*vit).begin();
+	    
+	    for(unsigned int j = 0; j < 5; j++)
+	    {
+		char c = *sit;		
+		unsigned int pattern = m_rbt_check[a][i][j].choice();
+		if( c == patterns[pattern])
+		    m_rbt_check[a][i][j].set_ok();
+		else
+		    m_rbt_check[a][i][j].set_no();
+		    
+		sit++;
+	    }
+	    vit++;
+	}
 }
 
 void PatternExcBox::on_firstpattern_finished()

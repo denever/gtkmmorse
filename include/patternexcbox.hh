@@ -29,7 +29,7 @@
 #define PATTERNEXCBOX_HH
 
 #include "astream.hh"
-#include "radiobuttons.hh"
+#include "bicheckbuttons.hh"
 
 #include <gtkmm/scale.h>
 #include <gtkmm/label.h>
@@ -37,6 +37,7 @@
 #include <gtkmm/table.h>
 #include <gtkmm/button.h>
 #include <gtkmm/buttonbox.h>
+#include <gtkmm/separator.h>
 
 #include <gconfmm.h>
 
@@ -78,6 +79,9 @@ namespace gtkmmorsegui
 
 	Gtk::HBox m_box_check;
 	Gtk::VBox m_box_lbls;	
+
+	Gtk::VSeparator m_vsp_1;
+	Gtk::VSeparator m_vsp_2;	
 	
 	Gtk::Table m_tbl_check1;
 	Gtk::Table m_tbl_check2;
@@ -86,7 +90,7 @@ namespace gtkmmorsegui
 
 //	Gtk::ProgressBar m_prb_overall;	
 	
-	gtkmmorsegui::RadioButtons m_rbt_check[3][4][5];	
+	gtkmmorsegui::BiCheckButtons m_rbt_check[3][4][5];	
 	
 	sigc::signal<void, unsigned int> m_started;
 	sigc::signal<void, std::list<std::string> > m_finished;

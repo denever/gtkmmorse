@@ -25,7 +25,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "radiobuttons.hh"
+#include "bicheckbuttons.hh"
 
 using namespace gtkmmorsegui;
 
@@ -96,11 +96,11 @@ void BiCheckButtons::set_no()
 
 void BiCheckButtons::clear()
 {
-    m_lbl_ok.hide();
-    m_lbl_no.hide();
-    
     m_ckb_choice1.remove();
     m_ckb_choice2.remove();
+
+    m_lbl_ok.hide();
+    m_lbl_no.hide();
 
     m_ckb_choice1.set_sensitive(true);
     m_ckb_choice2.set_sensitive(true);
