@@ -25,33 +25,39 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef RADIOBUTTONS_HH
-#define RADIOBUTTONS_HH
+#ifndef BICHECKBUTTONS_HH
+#define BICHECKBUTTONS_HH
 
 #include <gtkmm/box.h>
+#include <gtkmm/label.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/checkbutton.h>
 
 namespace gtkmmorsegui
 {
-    class RadioButtons : public Gtk::VBox
+    class BiCheckButtons : public Gtk::VBox
     {
     public:
-	RadioButtons();
-	~RadioButtons();
+	BiCheckButtons();
+	~BiCheckButtons();
 
 	void set_tooltips(Glib::ustring, Glib::ustring);
 	
 	void on_ckb_choice1();
 	void on_ckb_choice2();
-
-	inline unsigned int choice()
+	void set_ok();
+	void set_no();
+	void clear();
+	
+	inline int choice()
 	{
 	    return m_choice;
 	}
 	
     private:
-	unsigned int m_choice;
+	int m_choice;
+	Gtk::Label m_lbl_ok;
+	Gtk::Label m_lbl_no;
 	Gtk::CheckButton m_ckb_choice1;
 	Gtk::CheckButton m_ckb_choice2;
     };
