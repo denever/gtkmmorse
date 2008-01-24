@@ -38,6 +38,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/buttonbox.h>
 #include <gtkmm/separator.h>
+#include <gtkmm/progressbar.h>
 
 #include <gconfmm.h>
 
@@ -88,7 +89,7 @@ namespace gtkmmorsegui
 	Gtk::Table m_tbl_check3;
 	Gtk::Table m_tbl_lbls;
 
-//	Gtk::ProgressBar m_prb_overall;	
+	Gtk::ProgressBar m_prb_overall;	
 	
 	gtkmmorsegui::BiCheckButtons m_rbt_check[3][4][5];	
 	
