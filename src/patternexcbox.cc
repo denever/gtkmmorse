@@ -78,7 +78,6 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
 	    for(unsigned int j = 0; j < 5; j++)
 		m_rbt_check[a][i][j].set_tooltips("First pattern", "Second pattern");
 
-
     for(unsigned int i = 0; i < 4; i++)
 	for(unsigned int j = 0; j < 5; j++)
 	    m_tbl_check1.attach(m_rbt_check[0][i][j], j, j+1, i, i+1, Gtk::SHRINK, Gtk::SHRINK);
@@ -109,6 +108,7 @@ PatternExcBox::PatternExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_frm_checkboard.add(m_box_check);
 
     pack_start(m_frm_checkboard, Gtk::PACK_SHRINK);
+    pack_start(m_prb_overall, Gtk::PACK_SHRINK);
 }
 
 PatternExcBox::~PatternExcBox()
@@ -189,6 +189,9 @@ void PatternExcBox::on_btn_start_clicked()
 
     m_btn_start.set_sensitive(false);
     m_frm_checkboard.set_sensitive(true);
+
+    m_prb_overall.set_fraction(0);
+    m_prb_overall.set_text("");	    
 		    
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
     unsigned int keyspeed = 12;
@@ -231,6 +234,8 @@ void PatternExcBox::on_play_finished()
     typedef std::string::const_iterator c_str;
 
     c_vec vit = m_exercise_strings.begin(); 
+
+    unsigned int copied_good = 0;
     
     for(unsigned int a = 0; a < 3; a++)
 	for(unsigned int i = 0; i < 4; i++)
@@ -242,7 +247,10 @@ void PatternExcBox::on_play_finished()
 		char c = *sit;		
 		unsigned int pattern = m_rbt_check[a][i][j].choice();
 		if( c == patterns[pattern])
+		{
 		    m_rbt_check[a][i][j].set_ok();
+		    copied_good++;
+		}
 		else
 		    m_rbt_check[a][i][j].set_no();
 		    
@@ -250,6 +258,13 @@ void PatternExcBox::on_play_finished()
 	    }
 	    vit++;
 	}
+
+    double fraction = double(copied_good)/double(60);    
+    double overall_percentage = 100*fraction;
+
+    m_prb_overall.set_fraction(fraction);
+    Glib::ustring text = Glib::Ascii::dtostr(overall_percentage) + "%";
+    m_prb_overall.set_text(text);
 }
 
 void PatternExcBox::on_firstpattern_finished()
