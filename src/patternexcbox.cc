@@ -260,7 +260,7 @@ void PatternExcBox::on_play_finished()
 	}
 
     double fraction = double(copied_good)/double(60);    
-    double overall_percentage = 100*fraction;
+    double overall_percentage = int(100*fraction);
 
     m_prb_overall.set_fraction(fraction);
     Glib::ustring text = Glib::Ascii::dtostr(overall_percentage) + "%";

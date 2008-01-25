@@ -191,7 +191,7 @@ void CheckBox::on_exercise_finished(std::list<std::string> lst)
     }
 
     double fraction = 1 - double(wrong_letters)/double(m_total_chars);    
-    double overall_percentage = 100*fraction;
+    double overall_percentage = int(100*fraction);
 
     m_prb_overall.set_fraction(fraction);
     Glib::ustring text = Glib::Ascii::dtostr(overall_percentage) + "%";
