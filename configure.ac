@@ -18,7 +18,7 @@ AC_HEADER_STDC
 # Checks for libraries: libao, libgtkmm, libgconfmm, libgthread
 
 PKG_CHECK_MODULES([AO], [ao >= 0.8])
-PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4 >= 2.4])
+PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4 >= 2.12])
 PKG_CHECK_MODULES([GCONFMM], [gconfmm-2.6 >= 2.6])
 PKG_CHECK_MODULES([GTHREAD], [gthread-2.0 >= 2.0])
 
