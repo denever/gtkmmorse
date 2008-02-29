@@ -29,9 +29,9 @@
  #include "config.h"
 #endif
 
-#define MISSED_MARKER '@'
+#define MISSED_MARKER ' '
 
-#define chkmsg_legend "Please input the signs you copied.\nIf you didn't copy a sign, put @."
+#define chkmsg_legend "Please input the signs you copied.\nIf you didn't copy a sign, leave a space.\nPress enter for each string."
 
 #define fbkmsg_title "EVALUATION"
 

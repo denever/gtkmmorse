@@ -92,6 +92,11 @@ sigc::signal<void, std::list<std::string> >& RhythmExcBox::signal_exercise_finis
 
 void RhythmExcBox::on_btn_start_clicked()
 {
+    for(unsigned int a = 0; a < 3; a++)
+	for(unsigned int i = 0; i < 4; i++)
+	    for(unsigned int j = 0; j < 5; j++)
+		m_txt_check[a][i][j].clear();
+
     m_btn_start.set_sensitive(false);
     m_frm_checkboard.set_sensitive(true);
 

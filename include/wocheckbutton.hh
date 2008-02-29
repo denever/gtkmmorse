@@ -41,6 +41,12 @@ namespace gtkmmorsegui
 	~WOCheckButton()
 	{}
 
+	inline void clear()
+	{
+	    Gtk::ToggleButton::set_active(false);
+	    set_sensitive(true);
+	}
+	
     private:
 	void on_toggled()
 	{
