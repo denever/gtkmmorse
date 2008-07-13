@@ -31,8 +31,6 @@
 
 #include <gconfmm.h>
 
-std::string charsets[] = {group_chars1, group_chars2, group_chars3, group_chars4, group_chars5, group_numbrs}; 
-
 using namespace gtkmmorsegui;
 
 KochMainExcBox::KochMainExcBox(Glib::RefPtr<Gnome::Conf::Client> conf_client):
@@ -123,7 +121,7 @@ void KochMainExcBox::on_btn_play_clicked()
     m_btn_play.set_sensitive(false);
     
     Gtk::TreeModel::Row row = *m_cmb_charset.get_active();
-    std::string m_charset = charsets[row[m_mod_col.m_col_id]];
+    std::string m_charset = "hf";
 
     unsigned int begin_pause = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/beginpause");
     unsigned int pitch = (unsigned int) m_conf_client->get_float("/apps/gtkmmorse/keyer/pitch");

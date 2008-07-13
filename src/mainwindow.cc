@@ -33,7 +33,8 @@ using namespace gtkmmorsegui;
 MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     m_btn_quit("Quit"),
     m_box_rhythm(conf_client),
-    m_box_pattern(conf_client),    
+    m_box_pattern(conf_client),
+    m_box_mainkoch(conf_client),    
     m_box_setup(conf_client),
     m_box_block(conf_client)
 {
@@ -47,6 +48,7 @@ MainWindow::MainWindow(Glib::RefPtr<Gnome::Conf::Client> conf_client):
     
     m_nbkmain.append_page(m_box_rhythm, mainwindow_item1);    
     m_nbkmain.append_page(m_box_pattern, mainwindow_item2);
+    m_nbkmain.append_page(m_box_mainkoch, mainwindow_item3);    
     m_nbkmain.append_page(m_box_block, mainwindow_item6);
     m_nbkmain.append_page(m_box_setup, mainwindow_item4);    
     

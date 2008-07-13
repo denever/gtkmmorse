@@ -8,9 +8,10 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+CXX=g++-4.3
 bin_PROGRAMS = gtkmmorse
 gtkmmorse_SOURCES = astream.cc blockbox.cc main.cc setupbox.cc checkbox.cc\
-		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc patternexcbox.cc bicheckbuttons.cc
+		 blocks.cc keyer.cc mainwindow.cc random.cc rhythmexcbox.cc patternexcbox.cc bicheckbuttons.cc kochmainexcbox.cc
 gtkmmorse_CXXFLAGS = -ansi -Wall -pedantic -g -ggdb
 gtkmmorse_LDADD = $(AO_LIBS) $(GTKMM_LIBS) $(GCONFMM_LIBS) $(GTHREAD_LIBS)
 INCLUDES = -I$(top_srcdir)/include  $(AO_CFLAGS) $(GTKMM_CFLAGS) $(GCONFMM_CFLAGS) $(GTHREAD_CFLAGS)
